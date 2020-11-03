@@ -26,22 +26,7 @@ Data regarding sneaker collections will be stored in a MySQL backend. There will
 
 ## **Feature List**
 
-* Login
-* Logout
-* Add sneaker
-* Edit sneaker
-* delete sneaker
-* View Inventory
-* Collection value
-* Retrieve market Value of sneaker
-
-* Search sneaker
-* Sort by sneaker
-
-* Add photo
-* View photo
-
-* Follow user
-* User/public access to inventory
-* Share to community
+[Version 1](https://github.com/3296Fall2020/projects-01-sneaker-inventory/projects/1) <br/>
+[Version 2](https://github.com/3296Fall2020/projects-01-sneaker-inventory/projects/2) <br/>
+[Version 3](https://github.com/3296Fall2020/projects-01-sneaker-inventory/projects/3) <br/>
 
