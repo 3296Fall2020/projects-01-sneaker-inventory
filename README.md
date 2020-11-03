@@ -18,7 +18,11 @@ Data regarding sneaker collections will be stored in a MySQL backend. There will
 **_OUR PRODUCT_** let users easily track current value of their sneaker collection and share it with others.
 
 ## **Personas**
-![Persona John](Persona(John).png)
+![image](https://user-images.githubusercontent.com/54731009/97953265-f5f44800-1d6d-11eb-8073-4869c74c4a1f.png)
+![image](https://user-images.githubusercontent.com/54731009/97953293-086e8180-1d6e-11eb-8e84-f796abe9039c.png)
+![image](https://user-images.githubusercontent.com/54731009/97953309-12908000-1d6e-11eb-9a67-d5b5aa5fd81d.png)
+
+
 
 ## **Feature List**
 
