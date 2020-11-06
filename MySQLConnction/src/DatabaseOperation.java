@@ -76,26 +76,26 @@ public class DatabaseOperation {
 
         try {
             statement = connect.createStatement();
-            results = statement.executeQuery("SELECT * FROM user_table"); // get all data from table
+            results = statement.executeQuery("SELECT user_password FROM user_table WHERE user_id LIKE '"+userID+"'"); // get specific entry from database
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
 
-        while (true) { // compare all entries for match
+        while(true) {
             try {
                 if (!results.next()){ // if no match
                     //System.out.println("Please check the username and password");
                     return  false;
                 }
-                else if (userID.matches(results.getString(1)) && password.equals(results.getString(2))) {
+                else if (password.equals(results.getString(1))) { // only 1 col retrieved
                     //System.out.println("User can sign in"); // if match
                     return true;
                 }
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
-
         }
+
     }
 
     void closeConnection() {
