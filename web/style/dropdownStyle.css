@@ -1,0 +1,42 @@
+.dropdown {
+
+    /* .dropdown is a parent of dropContent. Since we want to right justify dropContent with its parent,
+    assign "position relative" to the parent (.dropdown) and "position absolute" to the child (.dropContent).      */
+    position: relative;
+
+    /* "display:inline-block" makes divs are positioned/treated like words instead of like block/paragraph elements */
+    display: inline-block;
+
+    /* put a little space between drop down group header entries */
+    margin-right: 0.5rem;
+
+    font-size: 1rem;
+    color:#C8C8C8;
+
+    /* Change mouse pointer when the user hovers over a dropdown element */
+    cursor: pointer;
+}
+
+.dropHeader {
+
+}
+
+.dropContent {
+    background-color:#0F1014;
+
+
+    position: absolute;
+    font-size: 14px;
+    z-index: 3;
+
+    padding: 8px;
+    line-height: 1.7em;
+    border-radius: 8px;
+    letter-spacing: 1px;
+
+    right: -500px;  /* places the element off screen to the right */
+    visibility: hidden; /* initially you cannot see the dropContent elements */
+
+    /* animate the change of the right property when clicked (zooms in from right but slowly)*/
+    transition: right 0.5s ease 0s;
+}

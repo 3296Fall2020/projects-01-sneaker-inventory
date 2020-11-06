@@ -6,19 +6,72 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Hello World!</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sneaker Inventory</title>
 
-        <link href="style/sample.css" rel="stylesheet" type="text/css" />
+
+        <link href="style/commonStyle.css" rel="stylesheet" type="text/css" />
+        <link href="style/dropdownStyle.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
-        <div>Hello World!</div>
-        <button onclick="newJavaScript()">Try it</button>
-        <script src="js/newjavascript.js"></script>
+        <div id="titleNav">
+            <div id="title">
+                Sneaker Inventory
+            </div>
 
-        <div> Akeems Button</div>
-        <button onclick="heDidWhat()">Try this one too</button>
-        <script src="js/akeemsAddition.js"></script>
+            <div id="nav">
+                <div class="dropdown">
+                    <a href="#/home">Home</a>
+                </div>
+                <div class="dropdown">
+                    <div class="dropHeader" onclick="dd.dropdown('accountDropDown')">Account</div>
+                    <div class="dropContent" id="accountDropDown">
+                        <a>Register</a> <br/>
+                        <a>Log On</a> <br/>
+                        <a>Log Off</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content">
+
+        </div>
+
+        <script src="js/reusable/dropdownFw.js"></script>
+        <script src="js/reusable/routeFw.js"></script>
+        <script src="js/components/home.js"></script>
+
+
+
+        <script>
+            "use strict";
+            var myRoutes =[];
+
+            myRoutes['#/'] = home;  // page reload will run function home
+            myRoutes['#/home'] = home; // function home
+
+
+            // routeFw returns an object that has private and public
+            // data members and methods.
+            // As input parameter, it takes an object with properties you can set
+            // or just accept whatever defaults are set by the framework.
+            myRoutes = routeFw({
+                routeArray: myRoutes,
+                contentId: "content"
+            });
+
+            // print the routes (check console.log)
+            myRoutes.printRoutes();
+
+
+        </script>
+
+
+        <script>
+            // pass to the dropdown framework the names of our two CSS styles
+            // that define our dropdowns (header style and content style). Also
+            // tell it how far off to the right you want the menus to disappear.
+            var dd = dropdownFw("dropHeader", "dropContent", "-500px");
+        </script>
+
     </body>
 </html>
