@@ -11,6 +11,8 @@ and open the template in the editor.
 
         <link href="style/commonStyle.css" rel="stylesheet" type="text/css" />
         <link href="style/dropdownStyle.css" rel="stylesheet" type="text/css" />
+        <link href="style/account.css" rel="stylesheet" type="text/css" />
+
     </head>
     <body>
         <div id="titleNav">
@@ -25,9 +27,15 @@ and open the template in the editor.
                 <div class="dropdown">
                     <div class="dropHeader" onclick="dd.dropdown('accountDropDown')">Account</div>
                     <div class="dropContent" id="accountDropDown">
-                        <a>Register</a> <br/>
+                        <a href="#/register">Register</a> <br/>
                         <a>Log On</a> <br/>
                         <a>Log Off</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <div class="dropHeader" onclick="dd.dropdown('accountDropDown')">Inventory</div>
+                    <div class="dropContent" id="inventoryDropDown">
+                        <a>View Inventory</a>
                     </div>
                 </div>
             </div>
@@ -39,6 +47,7 @@ and open the template in the editor.
         <script src="js/reusable/dropdownFw.js"></script>
         <script src="js/reusable/routeFw.js"></script>
         <script src="js/components/home.js"></script>
+        <script src="js/components/register.js"></script>
 
 
 
@@ -48,6 +57,7 @@ and open the template in the editor.
 
             myRoutes['#/'] = home;  // page reload will run function home
             myRoutes['#/home'] = home; // function home
+            myRoutes['#/register'] = register; // function home
 
 
             // routeFw returns an object that has private and public
