@@ -6,14 +6,14 @@ public class DatabaseOperation {
     Connection connect; // where connection to database will be stored on createConnection call
     Statement statement; // interface to represent SQL statement
 
-    /*public static void main(String[] args) { // main used for testing
+    public static void main(String[] args) { // main used for testing
         DatabaseOperation database = new DatabaseOperation();
         database.createConnect(); // create connect, needs to be done it initialize connect variable
         //database.printUsers();
        // System.out.println(database.addUser("Tony", "password")); // register
         //System.out.println(database.signIn("Akeem","password")); // login
         database.closeConnection(); // log off
-    }*/
+    }
 
     public void createConnect() {
         try {
