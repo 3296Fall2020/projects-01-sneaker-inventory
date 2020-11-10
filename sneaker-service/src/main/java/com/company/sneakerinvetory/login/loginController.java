@@ -1,5 +1,6 @@
 package com.company.sneakerinvetory.login;
 
+import com.company.sneakerinvetory.MySQLConnction.DatabaseOperation;
 import com.company.sneakerinvetory.login.LoginForm;
 import com.company.sneakerinvetory.login.LoginResponse;
 import org.springframework.stereotype.Controller;
@@ -15,17 +16,30 @@ public class loginController {
     @ResponseBody
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public LoginResponse handleLogin(@RequestBody LoginForm userForm){
-        System.out.println(userForm.getId());
-        System.out.println(userForm.getPassword());
+        DatabaseOperation operation = new DatabaseOperation();
+        operation.createConnect();
+        boolean available_user = operation.addUser(userForm.getId(), userForm.getPassword());
+        operation.closeConnection();
+        if (available_user){
+            return new LoginResponse("session id login");
+        }
+        return  new LoginResponse("username or password incorrect");
 
-        // call validate function
-
-        // if validated return LoginResponse... random sessionID
-        return new LoginResponse("session id");
-
-        // else
-        // return new LoginResponse("Error: Login not legit")
     }
+
+    @ResponseBody
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public LoginResponse handleRegister(@RequestBody LoginForm userForm){
+        DatabaseOperation operation = new DatabaseOperation();
+        operation.createConnect();
+        boolean available_user = operation.addUser(userForm.getId(), userForm.getPassword());
+        operation.closeConnection();
+        if (available_user){
+            return  new LoginResponse("user already created");
+        }
+        return new LoginResponse("session id register");
+    }
+
 
 
 }
