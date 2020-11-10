@@ -28,8 +28,8 @@ and open the template in the editor.
                     <div class="dropHeader" onclick="dd.dropdown('accountDropDown')">Account</div>
                     <div class="dropContent" id="accountDropDown">
                         <a href="#/register">Register</a> <br/>
-                        <a>Log On</a> <br/>
-                        <a>Log Off</a>
+                        <a href="#/login">Log In</a> <br/>
+                        <a href="#/logout">Log out</a>
                     </div>
                 </div>
                 <div class="dropdown">
@@ -48,6 +48,8 @@ and open the template in the editor.
         <script src="js/reusable/routeFw.js"></script>
         <script src="js/components/home.js"></script>
         <script src="js/components/register.js"></script>
+        <script src="js/components/login.js"></script>
+        <script src="js/components/logout.js"></script>
 
 
 
@@ -57,7 +59,9 @@ and open the template in the editor.
 
             myRoutes['#/'] = home;  // page reload will run function home
             myRoutes['#/home'] = home; // function home
-            myRoutes['#/register'] = register; // function home
+            myRoutes['#/register'] = register; // function register
+            myRoutes['#/login'] = login; // function login
+            myRoutes['#/logout'] = logout; // function logout
 
 
             // routeFw returns an object that has private and public
