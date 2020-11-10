@@ -18,7 +18,7 @@ public class loginController {
     public LoginResponse handleLogin(@RequestBody LoginForm userForm){
         DatabaseOperation operation = new DatabaseOperation();
         operation.createConnect();
-        boolean available_user = operation.addUser(userForm.getId(), userForm.getPassword());
+        boolean available_user = operation.signIn(userForm.getId(), userForm.getPassword());
         operation.closeConnection();
         if (available_user){
             return new LoginResponse("session id login");
@@ -32,12 +32,13 @@ public class loginController {
     public LoginResponse handleRegister(@RequestBody LoginForm userForm){
         DatabaseOperation operation = new DatabaseOperation();
         operation.createConnect();
-        boolean available_user = operation.addUser(userForm.getId(), userForm.getPassword());
+        boolean available_user = operation.signIn(userForm.getId(), userForm.getPassword());
         operation.closeConnection();
-        if (available_user){
-            return  new LoginResponse("user already created");
+        if (!available_user){
+            operation.addUser(userForm.getId(), userForm.getPassword());
+            return  new LoginResponse("session id register");
         }
-        return new LoginResponse("session id register");
+        return new LoginResponse("user already exists");
     }
 
 

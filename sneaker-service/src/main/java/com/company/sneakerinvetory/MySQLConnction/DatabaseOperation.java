@@ -9,9 +9,9 @@ public class DatabaseOperation {
     public static void main(String[] args) { // main used for testing
         DatabaseOperation database = new DatabaseOperation();
         database.createConnect(); // create connect, needs to be done it initialize connect variable
-        //database.printUsers();
-       // System.out.println(database.addUser("Tony", "password")); // register
-        //System.out.println(database.signIn("Akeem","password")); // login
+        database.printUsers();
+        System.out.println(database.addUser("Tony", "password")); // register
+        System.out.println(database.signIn("Akeem","password")); // login
         database.closeConnection(); // log off
     }
 
@@ -19,6 +19,7 @@ public class DatabaseOperation {
         try {
             //Class.forName("com.mysql.jdbc.Driver"); // load mysql driver
             connect = DriverManager.getConnection("jdbc:mysql://sneaker-inventory.ckxchjjiiu5r.us-east-2.rds.amazonaws.com:3306/SneakerInventory", "admin", "sneaker5"); // database & driver:// serveraddress:port/schema name
+            //connect = DriverManager.getConnection("jdbc:mysql://cis-4345-db.cubwbunupcjb.us-east-1.rds.amazonaws.com:3306?user=default&password=patriots1");
             System.out.println("Connection established");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
