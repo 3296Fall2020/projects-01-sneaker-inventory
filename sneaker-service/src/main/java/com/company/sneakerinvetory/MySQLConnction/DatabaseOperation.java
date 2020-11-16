@@ -79,45 +79,48 @@ public class DatabaseOperation {
         }
     } // don't need was for testing
 
-    public boolean checkName(String userID) { // if userID exists, return true
+    public boolean checkName(String userID) throws SQLException { // if userID exists, return true
         ResultSet results = null;
         try {
             statement = connect.createStatement();
-            results = statement.executeQuery("SELECT user_id FROM user_table WHERE user_id LIKE '"+userID+"'");
+            results = statement.executeQuery("SELECT user_id FROM user_table WHERE user_id ='"+userID+"'");
         } catch (SQLException throwables) {
             //throwables.printStackTrace();
+            return false;
         }
-        while (true){
+        while (results.next()) {
+
             try {
-                if (!results.next()){ // if no match
+                if (results.getString("user_id").equals(userID)) { // if no match
                     //System.out.println("Username available");
-                    return  false; // no match
+                    return true; // no match
                 }
-                else if (userID.equalsIgnoreCase(results.getString(1))) { // only 1 col retrieved
-                    //System.out.println("User name taken"); // if match
-                    return true; // match
-                }
+                return false;
             } catch (SQLException throwables) {
                 //throwables.printStackTrace();
                 return false; //empty dataset
             }
         }
+        return false;
+
+
     }
 
     public boolean addUser(String userID, String password) {
         try {
             statement = connect.createStatement(); // create statement to be executed on connection
-            statement.executeUpdate("INSERT INTO user_table  VALUES('" + userID + "','" + password + "')");
+            statement.executeUpdate("INSERT INTO user_table  (user_id, user_password) VALUES('" + userID + "','" + password + "')");
 
         } catch (SQLException throwables) {
+            throwables.printStackTrace();
             return false;
         }
         //System.out.println("User added");
         try { // if user added, create userID_inventory
             String tableName = userID.toLowerCase() + "_inventory";
             statement.executeUpdate("CREATE TABLE " + tableName + // create unique user inventory table if add
-                    " (index_id not NULL AUTO_INCREMENT, " +
-                    "shoeName VARCHAR(255) not NULL, " +
+                    " (index_id INTEGER not NULL AUTO_INCREMENT, " +
+                    " shoeName VARCHAR(255) not NULL, " +
                     " sku VARCHAR(255) not NULL, " +
                     " size VARCHAR(255) not NULL, " +
                     " date VARCHAR(255) not NULL, " +
@@ -125,7 +128,7 @@ public class DatabaseOperation {
                     " user_id VARCHAR(20)," +
                     " PRIMARY KEY (index_id),"+
                     " FOREIGN KEY ( user_id ) REFERENCES user_table (user_id))");
-        } catch(SQLException throwables){return false;} // this should never happen
+        } catch(SQLException throwables){ throwables.printStackTrace();return false;} // this should never happen
         return true;
 
     }

@@ -43,11 +43,14 @@ public class loginController {
         Random random = new Random();
         int sessionId = random.nextInt(Integer.MAX_VALUE);
         String string_session = String.valueOf(sessionId);
-        boolean available_user = operation.signIn(userForm.getId(), userForm.getPassword(), string_session);
+        boolean available_user = operation.checkName(userForm.getId());
 
-        if (available_user){
-            operation.addUser(userForm.getId(), userForm.getPassword());
-            return new LoginResponse(operation.querySessionID(userForm.getId()));
+        if (!available_user){
+            boolean addUser = operation.addUser(userForm.getId(), userForm.getPassword());
+            if (addUser) {
+                operation.signIn(userForm.getId(), userForm.getPassword(), string_session);
+                return new LoginResponse(operation.querySessionID(userForm.getId()));
+            }
         }
         operation.closeConnection();
         return new LoginResponse("SessionId");
@@ -71,7 +74,7 @@ public class loginController {
 
     @ResponseBody
     @RequestMapping(value = "/session", method = RequestMethod.GET)
-    public LoginResponse sessionResponse(@RequestBody String userID){
+    public LoginResponse sessionResponse(@RequestBody String userID) throws SQLException {
         DatabaseOperation operation = new DatabaseOperation();
         operation.createConnect();
         boolean available_user = operation.checkName(userID);
