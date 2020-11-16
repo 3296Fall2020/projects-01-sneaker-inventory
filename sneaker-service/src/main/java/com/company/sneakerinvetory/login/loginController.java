@@ -53,7 +53,7 @@ public class loginController {
             }
         }
         operation.closeConnection();
-        return new LoginResponse("SessionId");
+        return new LoginResponse("NaN");
 
 
     }
