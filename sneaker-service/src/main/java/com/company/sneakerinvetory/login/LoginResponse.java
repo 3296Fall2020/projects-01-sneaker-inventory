@@ -8,11 +8,11 @@ public class LoginResponse{
         this.sessionID = sessionID;
     }
 
-    public String getText() {
+    public String getSessionID() {
         return sessionID;
     }
 
-    public void setText(String text) {
+    public void setText(String sessionID) {
         this.sessionID = sessionID;
     }
 }
