@@ -1,0 +1,63 @@
+[
+  {
+    "sneakerName": "Jordan 1 Retro High Zoom White Racer Blue",
+    "sneakerSku": "CK6637-104",
+    "image": "pics/Jordan1ZoomRacerBlue.jpg",
+    "retailPrice": "175.00",
+    "releaseDate": "2020-03-14",
+    "currentValue": "489.00",
+    "quantity": "1",
+    "webUserId": "1"
+  },
+  {
+    "sneakerName": "Jordan 1 Retro High Court Purple White",
+    "sneakerSku": "555088-500",
+    "image": "pics/Jordan1CourtPurple.jpg",
+    "retailPrice": "170.00",
+    "releaseDate": "2020-04-11",
+    "currentValue": "315.00",
+    "quantity": "1",
+    "webUserId": "2"
+  },
+  {
+    "sneakerName": "Jordan 1 Retro High Royal Toe",
+    "sneakerSku": "555088-041",
+    "image": "pics/Jordan1RoyalToe.jpg",
+    "retailPrice": "170.00",
+    "releaseDate": "2020-05-09",
+    "currentValue": "319.00",
+    "quantity": "1",
+    "webUserId": "1"
+  },
+  {
+    "sneakerName": "Jordan 1 Retro High Tie Dye",
+    "sneakerSku": "CD0461-100",
+    "image": "pics/Jordan1TieDye.jpg",
+    "retailPrice": "170.00",
+    "releaseDate": "2020-06-26",
+    "currentValue": "279.00",
+    "quantity": "1",
+    "webUserId": "4"
+  },
+  {
+    "sneakerName": "Jordan 1 Retro High Satin Snake Chicago",
+    "sneakerSku": "CD0461-016",
+    "image": "pics/Jordan1SatinSnakeChicago.jpg",
+    "retailPrice": "170.00",
+    "releaseDate": "2020-08-06",
+    "currentValue": "283.00",
+    "quantity": "1",
+    "webUserId": "1"
+  },
+  {
+    "sneakerName": "Jordan 1 Retro High Tokyo Bio Hack",
+    "sneakerSku": "555088-201",
+    "image": "pics/Jordan1BioHack.jpg",
+    "retailPrice": "170.00",
+    "releaseDate": "2020-09-04",
+    "currentValue": "292.00",
+    "quantity": "1",
+    "webUserId": "1"
+  }
+
+]
