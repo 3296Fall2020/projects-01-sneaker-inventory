@@ -1,7 +1,7 @@
 package com.company.sneakerinvetory.sneaker;
 
 public class Sneaker {
-    String index;
+    int index;
     String id;
     String shoeName;
     String sku;
@@ -16,11 +16,11 @@ public class Sneaker {
         this.price = price;
     }
 
-    public String getIndex() {
+    public int getIndex() {
         return index;
     }
 
-    public void setIndex(String index) {
+    public void setIndex(int index) {
         this.index = index;
     }
 
@@ -69,7 +69,7 @@ public class Sneaker {
 
     }
     public static boolean validateEditSneaker(Sneaker sneaker){
-        return sneaker.getIndex() != null && sneaker.getid() != null && sneaker.getPrice() != null && sneaker.getSize() != null && sneaker.getSku() != null && sneaker.getShoeName() != null;
+        return sneaker.getIndex() != 0&& sneaker.getid() != null && sneaker.getPrice() != null && sneaker.getSize() != null && sneaker.getSku() != null && sneaker.getShoeName() != null;
     }
 
     public static void printSneaker(Sneaker sneaker){

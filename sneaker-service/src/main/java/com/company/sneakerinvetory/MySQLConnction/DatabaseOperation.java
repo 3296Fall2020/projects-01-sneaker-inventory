@@ -192,6 +192,7 @@ public class DatabaseOperation {
         return false;
     }
 
+    //-------------------------------------------------------------query database methods
     public String querySessionID(String userID){
         ResultSet results = null;
         String sessionQuery = "SELECT sessionID FROM user_table WHERE user_id = '" + userID + "'";
@@ -207,8 +208,42 @@ public class DatabaseOperation {
         }
         return sessionID;
     }
-//---------------------------------------------------------------------------- inventory functions
 
+    public boolean querySneakerExists(String userID, int indexID){
+        String table = userID.toLowerCase() + "_inventory";
+        ResultSet results = null;
+        String indexQuery = "SELECT index_id FROM " + table + " WHERE index_id = " + indexID ;
+        try{
+            statement = connect.createStatement();
+            results = statement.executeQuery(indexQuery);
+            if (results.next()) {
+                int index = results.getInt("index_id");
+                System.out.println("\n\nindex: " + index);
+                return index != 0;
+            }
+            System.out.println("userID = " + userID + " indexID = " + indexID);
+            System.out.println("\n\nresults: " + results.toString());
+
+        }catch (SQLException exception){
+            exception.printStackTrace();
+            return false;
+        }
+        return false;
+    }
+//---------------------------------------------------------------------------- manipulate inventory functions
+
+    public boolean deleteSneakerRow(String userID, int indexID){
+        String table = userID + "_inventory";
+        String deleteStatement = "DELETE FROM " + table + " WHERE index_id = " + indexID;
+        try{
+            statement = connect.createStatement();
+            statement.executeUpdate(deleteStatement);
+        } catch (SQLException exception){
+            exception.printStackTrace();
+            return false;
+        }
+        return true;
+    }
     public boolean insertData(String shoeName, String sku, String size ,  String price, String userID) // first entry needs to be entered via this method
     {
         String tableName = userID.toLowerCase() + "_inventory";
@@ -224,12 +259,12 @@ public class DatabaseOperation {
         return true;
     }
 
-    public boolean editForm(String index, String shoeName, String sku, String size, String price, String userID){
+    public boolean editForm(int index, String shoeName, String sku, String size, String price, String userID){
         String tableName = userID.toLowerCase() + "_inventory";
         try {
             statement = connect.createStatement();
             statement.executeUpdate("UPDATE "+ tableName + " SET shoeName = '" + shoeName + "', sku = '" + sku + "', size = '" + size
-                            + "', price = '" + price + "' WHERE index_id = '" + index + "'");
+                            + "', price = '" + price + "' WHERE index_id = " + index );
         }catch(SQLException throwables){
             throwables.printStackTrace();
             return false;}
