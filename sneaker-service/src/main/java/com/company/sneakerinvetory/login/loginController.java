@@ -84,17 +84,6 @@ public class loginController {
         return new LoginResponse(operation.querySessionID("NaN"));
     }
 
-    @ResponseBody
-    @RequestMapping(value = "/addSneaker", method = RequestMethod.POST)
-    public LoginResponse sessionResponse(@RequestBody Sneaker sneaker){
-        DatabaseOperation operation = new DatabaseOperation();
-        operation.createConnect();
-        boolean createSneaker = operation.insertData(sneaker.getSneakerName(), sneaker.getSku(), sneaker.getSize(), sneaker.getDate(), sneaker.getPrice(), sneaker.getUserID());
-        if (createSneaker){
-            return new LoginResponse("SessionID");
-        }
-        return new LoginResponse("NaN");
-    }
 
 
 
