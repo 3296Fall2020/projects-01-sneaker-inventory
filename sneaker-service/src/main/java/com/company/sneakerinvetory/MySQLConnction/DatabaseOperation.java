@@ -28,7 +28,7 @@ public class DatabaseOperation {
         //System.out.println(database.editSize("tony",11.5,1)); // true if done
         //System.out.println(database.editPrice("tony",120,1)); // true if done
         //System.out.println(database.editDate("tony","2020/12/25",1)); // true if done YYYY/MM/DD
-        System.out.println(database.editForm(1,"Tims",null,"123shoe",11,null,101.67,"Tony"));
+        //System.out.println(database.editForm(1,"Tims",null,"123shoe",11,null,101.67,"Tony"));
         //--------------------------------------------------------------
         database.closeConnection(); // log off
     }
@@ -123,9 +123,8 @@ public class DatabaseOperation {
                     " shoeName VARCHAR(255) not NULL, " +
                     " sku VARCHAR(255) not NULL, " +
                     " size VARCHAR(255) not NULL, " +
-                    " date VARCHAR(255) not NULL, " +
                     " price VARCHAR(255) not NULL, " +
-                    " user_id VARCHAR(20)," +
+                    " user_id VARCHAR(20) not NULL," +
                     " PRIMARY KEY (index_id),"+
                     " FOREIGN KEY ( user_id ) REFERENCES user_table (user_id))");
         } catch(SQLException throwables){ throwables.printStackTrace();return false;} // this should never happen
@@ -210,13 +209,14 @@ public class DatabaseOperation {
     }
 //---------------------------------------------------------------------------- inventory functions
 
-    public boolean insertData(String shoeName, String sku, String size , String date, String price, String userID) // first entry needs to be entered via this method
+    public boolean insertData(String shoeName, String sku, String size ,  String price, String userID) // first entry needs to be entered via this method
     {
         String tableName = userID.toLowerCase() + "_inventory";
         try {
             statement = connect.createStatement();
-            statement.executeUpdate("INSERT INTO "+ tableName + " "+
-                    "VALUES (" +shoeName+"','" +sku+"',"+size+",'"+date+"', "+price+",'"+userID+"')" );
+            statement.executeUpdate("INSERT INTO "+ tableName + " (shoeName, sku, size, price, user_id) "+
+                    "VALUES ('" +shoeName+"', '" +sku+"', '"+size+"', '"+price+"', '"+userID+"' )" );
+
 
         }catch(SQLException throwables){
             throwables.printStackTrace();
@@ -224,19 +224,26 @@ public class DatabaseOperation {
         return true;
     }
 
-    boolean editForm(int index, String brand, String model, String sku, double size , String date, double price, String userID) // edits rows that are already created, insert null/0 for unwanted string/number changes
+    public boolean editForm(String index, String shoeName, String sku, String size, String price, String userID){
+        String tableName = userID.toLowerCase() + "_inventory";
+        try {
+            statement = connect.createStatement();
+            statement.executeUpdate("UPDATE "+ tableName + " SET shoeName = '" + shoeName + "', sku = '" + sku + "', size = '" + size
+                            + "', price = '" + price + "' WHERE index_id = '" + index + "'");
+        }catch(SQLException throwables){
+            throwables.printStackTrace();
+            return false;}
+        return true;
+    }
+
+    /*public boolean editForm(String index, String sneakerName, String sku, String size , String date, double price, String userID) // edits rows that are already created, insert null/0 for unwanted string/number changes
     {
         int isDone = 0; //false
         if(brand != null){
             editBrand(userID,brand,index);
             isDone++;
         }
-
-        if(model != null){
-            editModel(userID,model,index);
-            isDone++;
-        }
-
+        
         if(sku != null){
             editSKU(userID,sku,index);
             isDone++;
@@ -259,9 +266,9 @@ public class DatabaseOperation {
 
         if(isDone>0){return true;}
         else {return false;}
-    }
+    }*/
 
-    boolean editBrand( String userID, String brandName, int index)  {
+    boolean editBrand( String userID, String brandName, String index)  {
         String tableName = userID.toLowerCase() + "_inventory";
         try {
             statement = connect.createStatement();
@@ -276,7 +283,7 @@ public class DatabaseOperation {
 
     }
 
-    boolean editModel(String userID, String model, int index){
+    boolean editModel(String userID, String model, String index){
         String tableName = userID.toLowerCase()  + "_inventory";
         try {
             statement = connect.createStatement();
@@ -290,7 +297,7 @@ public class DatabaseOperation {
         }
     }
 
-    boolean editSKU(String userID, String sku, int index){
+    boolean editSKU(String userID, String sku, String index){
         String tableName = userID.toLowerCase() + "_inventory";
         try {
             statement = connect.createStatement();
@@ -304,7 +311,7 @@ public class DatabaseOperation {
         }
     }
 
-    boolean editSize(String userID, double size, int index){
+    boolean editSize(String userID, String size, String index){
         String tableName = userID.toLowerCase()  + "_inventory";
         try {
             statement = connect.createStatement();
@@ -318,7 +325,7 @@ public class DatabaseOperation {
         }
     }
 
-    boolean editDate(String userID, String date, int index){
+    boolean editDate(String userID, String date, String index){
         String tableName = userID.toLowerCase()  + "_inventory";
         try {
             statement = connect.createStatement();
@@ -331,7 +338,7 @@ public class DatabaseOperation {
             return false;
         }}
 
-    boolean editPrice(String userID, double price, int index){
+    boolean editPrice(String userID, double price, String index){
         String tableName = userID.toLowerCase()  + "_inventory";
         try {
             statement = connect.createStatement();
