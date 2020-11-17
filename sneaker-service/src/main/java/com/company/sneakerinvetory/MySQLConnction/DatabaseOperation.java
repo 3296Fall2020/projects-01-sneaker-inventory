@@ -1,5 +1,7 @@
 package com.company.sneakerinvetory.MySQLConnction;
 
+import javax.json.Json;
+import javax.json.JsonObject;
 import java.sql.*;
 
 public class DatabaseOperation {
@@ -218,11 +220,9 @@ public class DatabaseOperation {
             results = statement.executeQuery(indexQuery);
             if (results.next()) {
                 int index = results.getInt("index_id");
-                System.out.println("\n\nindex: " + index);
                 return index != 0;
             }
-            System.out.println("userID = " + userID + " indexID = " + indexID);
-            System.out.println("\n\nresults: " + results.toString());
+
 
         }catch (SQLException exception){
             exception.printStackTrace();
@@ -230,6 +230,56 @@ public class DatabaseOperation {
         }
         return false;
     }
+
+    public String queryInventory(String userID){
+        String table = userID.toLowerCase() + "_inventory";
+        ResultSet results = null;
+        StringBuilder total = new StringBuilder();
+
+
+        try {
+            statement = connect.createStatement();
+            String rowCountQuery = "SELECT COUNT(*) FROM " + table;
+            results = statement.executeQuery(rowCountQuery);
+            results.next();
+
+            int row_count = results.getInt(1);
+            int counter = 3;
+
+            while (counter < row_count + 3) {
+
+                String inventoryQuery = "SELECT * FROM " + table + " WHERE index_id = " + counter;
+                results = statement.executeQuery(inventoryQuery);
+
+                while (results.next()) {
+                    int index_id = results.getInt("index_id");
+                    String shoeName = results.getString("shoeName");
+                    String sku = results.getString("sku");
+                    String size = results.getString("size");
+                    String price = results.getString("price");
+                    String user_id = results.getString("user_id");
+
+                    JsonObject object = Json.createObjectBuilder()
+                            .add("index_id", index_id)
+                            .add("shoeName", shoeName)
+                            .add("sku", sku)
+                            .add("size", size)
+                            .add("price", price)
+                            .add("user_id", user_id)
+                            .build();
+                    total.append(object.toString());
+                }
+                counter++;
+            }
+            return total.toString();
+        }catch (SQLException e){
+            e.printStackTrace();
+            return "NaN";
+        }
+
+    }
+
+
 //---------------------------------------------------------------------------- manipulate inventory functions
 
     public boolean deleteSneakerRow(String userID, int indexID){

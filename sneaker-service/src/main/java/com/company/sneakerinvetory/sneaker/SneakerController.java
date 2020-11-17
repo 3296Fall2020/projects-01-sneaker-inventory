@@ -49,9 +49,10 @@ public class SneakerController {
     public LoginResponse handleDeleteSneaker(@RequestBody Sneaker sneaker) throws SQLException {
         DatabaseOperation operation = new DatabaseOperation();
         operation.createConnect();
-        boolean existingSneaker = operation.querySneakerExists(sneaker.getid(), sneaker.getIndex());
+
         boolean existing_user = operation.checkName(sneaker.getid());
         if (existing_user) {
+            boolean existingSneaker = operation.querySneakerExists(sneaker.getid(), sneaker.getIndex());
             if (existingSneaker) {
                 boolean delete_sneaker = operation.deleteSneakerRow(sneaker.getid(), sneaker.getIndex());
                 if (delete_sneaker) {
@@ -64,4 +65,6 @@ public class SneakerController {
         // check that sneaker exists based on index
 
     }
+
+
 }
