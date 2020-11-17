@@ -1,27 +1,36 @@
 package com.company.sneakerinvetory.sneaker;
 
 public class Sneaker {
-    String userID;
+    String index;
+    String id;
     String SneakerName;
     String Sku;
     String size;
     String date;
     String price;
 
-    public Sneaker(String userID, String sneakerName, String Sku, String size, String price){
-        this.userID = userID;
+    public Sneaker(String id, String sneakerName, String Sku, String size, String price){
+        this.id = id;
         this.SneakerName = sneakerName;
         this.Sku = Sku;
         this.size = size;
         this.price = price;
     }
 
-    public String getUserID() {
-        return userID;
+    public String getIndex() {
+        return index;
     }
 
-    public void setUserID(String userID) {
-        this.userID = userID;
+    public void setIndex(String index) {
+        this.index = index;
+    }
+
+    public String getid() {
+        return id;
+    }
+
+    public void setid(String id) {
+        this.id = id;
     }
 
     public String getSneakerName() {
