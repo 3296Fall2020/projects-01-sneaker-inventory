@@ -1,16 +1,17 @@
 package com.company.sneakerinvetory.inventory;
 
 public class InventoryResponse {
-    String jsonResponse;
+    String inventoryResponse;
 
     public InventoryResponse(String json){
-        this.jsonResponse = json;
-    }
-    public String getJsonResponse() {
-        return jsonResponse;
+        this.inventoryResponse = json;
     }
 
-    public void setJsonResponse(String jsonResponse) {
-        this.jsonResponse = jsonResponse;
+    public String getInventoryResponse() {
+        return inventoryResponse;
+    }
+
+    public void setInventoryResponse(String inventoryResponse) {
+        this.inventoryResponse = inventoryResponse;
     }
 }
