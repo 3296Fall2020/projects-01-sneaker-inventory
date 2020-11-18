@@ -6,7 +6,7 @@ public class driver {
     public static void main(String agrs[]) throws IOException, InterruptedException {
         Sneaker sneaker = new Sneaker("fu9007", "yeezy black", "11");
         EbayReader reader = new EbayReader(sneaker);
-        String url = reader.getGetAveragePrice();
+        String url = reader.getAveragePrice();
         System.out.println(url);
     }
 }

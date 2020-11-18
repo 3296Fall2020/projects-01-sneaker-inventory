@@ -3,6 +3,8 @@ package com.company.sneakerinvetory.Stockx;
 
 
 
+import com.gargoylesoftware.htmlunit.WebClient;
+import com.gargoylesoftware.htmlunit.html.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -22,49 +24,62 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
-
+// https://stackoverflow.com/questions/16375365/how-to-get-text-between-a-specific-span-with-htmlunit
 public class EbayReader {
 
-    private String AveragePrice;
+    WebClient client;
+    HtmlPage page;
+    String BASE_URL = "https://www.ebay.com";
     private Sneaker sneaker;
-    private JsonObject jsonObject;
-    String BASE_SEARCH_URL = "https://svcs.ebay.com/services/search/FindingService/v1";
+
     public EbayReader(Sneaker sneaker){
         this.sneaker = sneaker;
     }
+    public String getAveragePrice() throws IOException {
+        client = new WebClient();
+        client.getOptions().setJavaScriptEnabled(false);
+        client.getOptions().setCssEnabled(false);
+        client.getOptions().setThrowExceptionOnScriptError(false);
+        client.waitForBackgroundJavaScriptStartingBefore(1000);
+        client.waitForBackgroundJavaScript(1000);
+        page = client.getPage(BASE_URL);
 
-    // tradditional selling api
+        HtmlInput searchBar = page.getFirstByXPath("//*[@id=\"gh-ac\"]");
+        searchBar.setValueAttribute(sneaker.getSku());
+        HtmlForm form = searchBar.getEnclosingForm();
 
-    public String getGetAveragePrice() throws IOException {
-        jsonObject = Json.createObjectBuilder()
-                .add("jsonns.xsi", "https://www.w3.org/2001/XMLSchema-instance")
-                .add("jsonns.xs", "https://www.w3.org/2001/XMLSchema")
-                .add("jsonns.tns","https://www.ebay.com/marketplace/search/v1/services")
-                .add("findItemsByKeywordsRequest", Json.createObjectBuilder()
-                        .add("keywords", sneaker.getName() + " " + sneaker.getSku()))
-                .build();
-        String request = jsonObject.toString();
-        URL url = new URL("https://svcs.ebay.com/services/search/FindingService/v1");
-        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        connection.setRequestMethod("POST");
-        //connection.setRequestProperty("Content-Type", "application/json; utf-8");
-        connection.setDoOutput(true);
-        try{
-            OutputStream outputStream = connection.getOutputStream();
-            byte[] input = request.getBytes("utf-8");
-            outputStream.write(input, 0, input.length);
-        }catch (Exception e){
-            e.printStackTrace();
+        page = client.getPage(form.getWebRequest(null));
+
+        final List<DomElement> spans = page.getElementsByTagName("span");
+        String lowest_price = "NaN";
+
+        HtmlAnchor buyNowButton = page.getFirstByXPath("//*[@id=\"s0-14-11-5-1[0]\"]/div[2]/div/div/ul/li[4]/a");
+        String buy_url = buyNowButton.getAttribute("href");
+
+        String size_url = "";
+        page = client.getPage(buy_url);
+
+        DomElement result_element = page.getFirstByXPath("//*[@id=\"mainContent\"]/div[1]/div/div[2]/div[1]/div[1]/h1/span[1]");
+        int num_results = Integer.parseInt(result_element.getTextContent());
+        if (num_results > 0) {
+            List<HtmlAnchor> buttonAnchors = page.getAnchors();
+
+            for (HtmlAnchor anchor: buttonAnchors){
+                if (anchor.getTextContent().equals(sneaker.getSize())){
+                    size_url = anchor.getHrefAttribute();
+                }
+            }
+            page = client.getPage(size_url);
+
+            DomElement price_element = page.getFirstByXPath("//span[@class='s-item__price'][1]");
+            lowest_price = price_element.getTextContent();
         }
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-        StringBuilder builder = new StringBuilder();
-        String response = "";
-        while ((response = br.readLine()) != null){
-            builder.append(response);
-        }
 
-        return builder.toString();
+
+        return lowest_price;
+
+
 
     }
 
