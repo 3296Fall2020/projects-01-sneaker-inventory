@@ -71,7 +71,7 @@ public class EbayReader {
             page = client.getPage(BASE_URL);
 
             HtmlInput searchBar = page.getFirstByXPath("//*[@id=\"gh-ac\"]");
-            searchBar.setValueAttribute(ebaySneaker.getSku() + " " + ebaySneaker.getSize());
+            searchBar.setValueAttribute(ebaySneaker.getSku() + " " + ebaySneaker.getSize()); // try search with sie
             HtmlForm form = searchBar.getEnclosingForm();
 
             page = client.getPage(form.getWebRequest(null));
@@ -84,9 +84,31 @@ public class EbayReader {
 
             page = client.getPage(buy_url);
 
+            // get number of results based on search query.... should be greater than 0 if not then return "no results, bad name or sku"
             DomElement result_element = page.getFirstByXPath("//*[@id=\"mainContent\"]/div[1]/div/div[2]/div[1]/div[1]/h1/span[1]");
             int num_results = Integer.parseInt(result_element.getTextContent());
 
+            if (num_results < 1){ // if no results... try search without size
+                searchBar = page.getFirstByXPath("//*[@id=\"gh-ac\"]");
+                searchBar.setValueAttribute(ebaySneaker.getSku());
+                form = searchBar.getEnclosingForm();
+
+                page = client.getPage(form.getWebRequest(null));
+
+                final List<DomElement> spans_again = page.getElementsByTagName("span");
+                lowest_price = "NaN";
+
+                buyNowButton = page.getFirstByXPath("//*[@id=\"s0-14-11-5-1[0]\"]/div[2]/div/div/ul/li[4]/a");
+                buy_url = buyNowButton.getAttribute("href");
+
+                page = client.getPage(buy_url);
+
+                // get number of results based on search query.... should be greater than 0 if not then return "no results, bad name or sku"
+                result_element = page.getFirstByXPath("//*[@id=\"mainContent\"]/div[1]/div/div[2]/div[1]/div[1]/h1/span[1]");
+                num_results = Integer.parseInt(result_element.getTextContent());
+            }
+            if (num_results > 0) {
+            //filter button.. expand to get options
             HtmlButton button = page.getFirstByXPath("//button[@class=\"fake-menu-button__button expand-btn expand-btn--small expand-btn--secondary\"]");
             button.click();
 
@@ -94,17 +116,21 @@ public class EbayReader {
             String filter_url = "";
             for (HtmlAnchor filterAnchor : filterAnchors) {
                 String url = filterAnchor.getHrefAttribute();
-                if (url.contains("sop=15")) {
+                if (url.contains("sop=15")) { // sop=15 href for lowest value first
                     filter_url = url;
                 }
             }
-            page = client.getPage(filter_url);
-            if (num_results > 0) {
-                DomElement price_element = page.getFirstByXPath("//span[@class='s-item__price'][1]");
+            page = client.getPage(filter_url); //go to new link sorted with lowest value first
+
+
+                DomElement price_element = page.getFirstByXPath("//span[@class='s-item__price'][1]"); //find price of first element in table
                 lowest_price = price_element.getTextContent();
+                return lowest_price;
+            } else{
+                return  "no results: bad name, unavailable size, or bad sku";
             }
 
-            return lowest_price;
+
         } catch(Exception e){
             return "NaN";
         }

@@ -12,12 +12,12 @@ public class EbayEndpoint {
     @RequestMapping(value = "/ebayAverage", method = RequestMethod.GET)
     public EbayResponse handleEbayAverage(@RequestBody EbaySneaker ebaySneaker){
         boolean isValid = EbaySneaker.validateEbaySneaker(ebaySneaker);
-        
+
         if (isValid){
             EbayThread thread = new EbayThread(ebaySneaker);
             thread.run();
             return new EbayResponse(thread.getPrice());
         }
-        return new EbayResponse("NaN");
+        return new EbayResponse("NaN bad request");
     }
 }
