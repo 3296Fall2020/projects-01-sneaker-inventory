@@ -1,12 +1,11 @@
-package com.company.sneakerinvetory.Stockx;
+package com.company.sneakerinvetory.ebay;
 
-public class Sneaker {
+public class EbaySneaker {
     private String sku;
     private String name;
     private String size;
-    private String average;
 
-    public Sneaker(String sku, String name, String size){
+    public EbaySneaker(String sku, String name, String size){
         this.sku  = sku;
         this.name = name.trim();
         this.name = name;
@@ -38,18 +37,6 @@ public class Sneaker {
 
     public void setSize(String size) {
         this.size = size;
-    }
-
-    public String retreiveAverage(){
-        if (sku != null & name != null){
-            Runnable thread = new Thread(){
-                @Override
-                public void run() {
-
-                }
-            };
-        }
-        return this.average;
     }
 
 }
