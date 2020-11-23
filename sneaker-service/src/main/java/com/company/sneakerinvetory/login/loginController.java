@@ -49,7 +49,7 @@ public class loginController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    @RequestMapping(value = "/register", method = RequestMethod.POST) // return error as string in future
     public LoginResponse handleRegister(@RequestBody LoginForm userForm, HttpServletRequest request, HttpServletResponse response) throws SQLException {
 
         DatabaseOperation operation = new DatabaseOperation();

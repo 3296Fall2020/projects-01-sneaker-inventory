@@ -134,7 +134,7 @@ public class DatabaseOperation {
 
     }
 
-    public boolean signIn(String userID, String password, String sessionID) throws SQLException {
+    public boolean signIn(String userID, String password) throws SQLException {
         ResultSet results = null;
 
         try {
@@ -147,15 +147,11 @@ public class DatabaseOperation {
 
         while(results.next()) {
             try {
-                if (!results.getString("user_password").equals(password)){ // if no match
+                if (results.getString("user_password").equals(password)){ // if no match
                     //System.out.println("Please check the username and password");
-                    return  false;
+                    return  true;
                 }
-                else if (password.equals(results.getString("user_password"))) { // only 1 col retrieved
-                    //System.out.println("User can sign in"); // if match
-                    statement.executeUpdate("UPDATE user_table SET sessionID = '" + sessionID + "' WHERE user_id ='"+userID+"'");
-                    return true;
-                }
+
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
                 return false;
