@@ -1,5 +1,6 @@
 package com.company.sneakerinvetory.login;
 
+import com.company.sneakerinvetory.HelloController;
 import com.company.sneakerinvetory.MySQLConnction.DatabaseOperation;
 import com.company.sneakerinvetory.login.LoginForm;
 import com.company.sneakerinvetory.login.LoginResponse;
@@ -7,6 +8,10 @@ import com.company.sneakerinvetory.sneaker.Sneaker;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
 import java.util.Random;
 
@@ -19,17 +24,25 @@ public class loginController {
 
     @ResponseBody
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public LoginResponse handleLogin(@RequestBody LoginForm userForm) throws SQLException {
+    public LoginResponse handleLogin(@RequestBody LoginForm userForm, HttpServletRequest request, HttpServletResponse response) throws SQLException {
+
+        // check that username/password exists in database
         DatabaseOperation operation = new DatabaseOperation();
         operation.createConnect();
-        Random random = new Random();
-        int sessionId = random.nextInt(Integer.MAX_VALUE);
-        String string_session = String.valueOf(sessionId);
-        boolean available_user = operation.signIn(userForm.getId(), userForm.getPassword(), string_session);
+
+        // GET http
+        boolean available_user = operation.signIn(userForm.getId(), userForm.getPassword());
 
         if (available_user){
-            return new LoginResponse(operation.querySessionID(userForm.getId()));
+            HttpSession session = HelloController.createSession(request, response);
+            response.addCookie(new Cookie("username", userForm.getId()));
+            response.addCookie(new Cookie("password", userForm.getPassword()));
+            session.setAttribute("username", userForm.getId());
+            session.setAttribute("password", userForm.getPassword());
+
+            return new LoginResponse("login");
         }
+
         operation.closeConnection();
         return  new LoginResponse("username or password incorrect");
 
@@ -37,19 +50,24 @@ public class loginController {
 
     @ResponseBody
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public LoginResponse handleRegister(@RequestBody LoginForm userForm) throws SQLException {
+    public LoginResponse handleRegister(@RequestBody LoginForm userForm, HttpServletRequest request, HttpServletResponse response) throws SQLException {
+
         DatabaseOperation operation = new DatabaseOperation();
         operation.createConnect();
-        Random random = new Random();
-        int sessionId = random.nextInt(Integer.MAX_VALUE);
-        String string_session = String.valueOf(sessionId);
+
         boolean available_user = operation.checkName(userForm.getId());
 
         if (!available_user){
+
             boolean addUser = operation.addUser(userForm.getId(), userForm.getPassword());
             if (addUser) {
-                operation.signIn(userForm.getId(), userForm.getPassword(), string_session);
-                return new LoginResponse(operation.querySessionID(userForm.getId()));
+                HttpSession session = HelloController.createSession(request, response);
+                response.addCookie(new Cookie("username", userForm.getId()));
+                response.addCookie(new Cookie("password", userForm.getPassword()));
+                session.setAttribute("username", userForm.getId());
+                session.setAttribute("password", userForm.getPassword());
+
+                return new LoginResponse("register");
             }
         }
         operation.closeConnection();
@@ -59,31 +77,22 @@ public class loginController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/logout", method = RequestMethod.POST)
-    public LoginResponse handleLogout(@RequestBody LoginForm userForm) throws SQLException {
+    @RequestMapping(value = "/logout", method = RequestMethod.DELETE)
+    public LoginResponse handleLogout(@RequestBody LoginForm userForm, HttpServletRequest request, HttpServletResponse response) throws SQLException {
+
         DatabaseOperation operation = new DatabaseOperation();
         operation.createConnect();
-        boolean available_user = operation.checkName(userForm.getId());
 
-        if (available_user){
-            operation.signOut(userForm.getId(), userForm.getPassword());
-        }
-        operation.closeConnection();
-        return new LoginResponse("NaN");
+        HttpSession session_new = HelloController.createSession(request, response);
+        return new LoginResponse("session_new");
     }
 
     // validate userID
     @ResponseBody
     @RequestMapping(value = "/session", method = RequestMethod.GET)
-    public LoginResponse sessionResponse(@RequestBody LoginForm userID) throws SQLException {
-        DatabaseOperation operation = new DatabaseOperation();
-        operation.createConnect();
-        boolean available_user = operation.checkName(userID.getId());
-        if (available_user){
-            return new LoginResponse(operation.querySessionID(userID.getId()));
-        }
-
-        return new LoginResponse("NaN");
+    public LoginResponse sessionResponse(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+       HttpSession session = request.getSession();
+       return new LoginResponse(session.getId());
     }
 
 
