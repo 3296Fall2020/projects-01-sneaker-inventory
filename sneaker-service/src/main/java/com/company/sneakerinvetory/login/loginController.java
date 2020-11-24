@@ -83,7 +83,7 @@ public class loginController {
 
     @ResponseBody
     @RequestMapping(value = "/logout", method = RequestMethod.DELETE)
-    public LoginResponse handleLogout(@RequestBody LoginForm userForm, HttpServletRequest request, HttpServletResponse response) throws SQLException {
+    public LoginResponse handleLogout(HttpServletRequest request, HttpServletResponse response) throws SQLException {
 
         DatabaseOperation operation = new DatabaseOperation();
         operation.createConnect();
