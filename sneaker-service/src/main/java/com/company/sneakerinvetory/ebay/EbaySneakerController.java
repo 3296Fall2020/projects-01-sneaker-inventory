@@ -20,7 +20,7 @@ public class EbaySneakerController {
 
         boolean isRedirectedSession = HelloController.validate_or_redirect_session(request, response);
 
-        if (isRedirectedSession) {
+        if (!isRedirectedSession) {
             if (isValid) {
                 EbayThread thread = new EbayThread(ebaySneaker);
                 thread.run();

@@ -56,7 +56,7 @@ public class HelloController {
         session.invalidate();
         session = request.getSession();
 
-        session.setMaxInactiveInterval(60 * 60); //six minute expiration between requests
+        session.setMaxInactiveInterval(60 * 6); //six minute expiration between requests
         updateCookie(request, response, "sessionID", session.getId());
         return session;
     }

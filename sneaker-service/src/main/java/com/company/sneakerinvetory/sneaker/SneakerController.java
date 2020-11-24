@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -19,12 +20,14 @@ public class SneakerController {
     public LoginResponse handleAddSneaker(@RequestBody Sneaker sneaker, HttpServletRequest request, HttpServletResponse response) throws IOException {
         boolean isRedirectedSession = HelloController.validate_or_redirect_session(request,response);
 
-        if (isRedirectedSession) {
+        if (!isRedirectedSession) {
+            HttpSession session = request.getSession();
             DatabaseOperation operation = new DatabaseOperation();
             operation.createConnect();
+
             boolean valid = Sneaker.validateAddSneaker(sneaker);
             if (valid) {
-                boolean createSneaker = operation.insertData(sneaker.getShoeName(), sneaker.getSku(), sneaker.getSize(), sneaker.getPrice(), sneaker.getid());
+                boolean createSneaker = operation.insertData(sneaker.getShoeName(), sneaker.getSku(), sneaker.getSize(), sneaker.getPrice(), (String) session.getAttribute("username"));
                 if (createSneaker) {
                     return new LoginResponse("SessionID");
                 }
@@ -32,7 +35,8 @@ public class SneakerController {
             operation.closeConnection();
             return new LoginResponse("NaN");
         }
-        return new LoginResponse("newSesison");
+
+        return new LoginResponse("newSession"); //redirected
     }
 
     @ResponseBody
@@ -40,14 +44,15 @@ public class SneakerController {
     public LoginResponse handleEditSneaker(@RequestBody Sneaker sneaker, HttpServletRequest request, HttpServletResponse response) throws IOException {
         boolean isRedirectedSession = HelloController.validate_or_redirect_session(request,response);
 
-        if (isRedirectedSession) {
+        if (!isRedirectedSession) {
             DatabaseOperation operation = new DatabaseOperation();
             operation.createConnect();
+
+            HttpSession session = request.getSession();
             boolean valid = Sneaker.validateEditSneaker(sneaker);
             if (valid) {
-                boolean createSneaker = operation.editForm(sneaker.getIndex(), sneaker.getShoeName(), sneaker.getSku(), sneaker.getSize(), sneaker.getPrice(), sneaker.getid());
+                boolean createSneaker = operation.editForm(sneaker.getIndex(), sneaker.getShoeName(), sneaker.getSku(), sneaker.getSize(), sneaker.getPrice(), (String) session.getAttribute("username"));
                 if (createSneaker) {
-
                     return new LoginResponse("SessionID");
                 }
             }
@@ -63,15 +68,16 @@ public class SneakerController {
     public LoginResponse handleDeleteSneaker(@RequestBody Sneaker sneaker, HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
         boolean isRedirectedSession = HelloController.validate_or_redirect_session(request,response);
 
-        if (isRedirectedSession) {
+        if (!isRedirectedSession) {
             DatabaseOperation operation = new DatabaseOperation();
             operation.createConnect();
 
-            boolean existing_user = operation.checkName(sneaker.getid());
+            String username = (String) request.getSession().getAttribute("username");
+            boolean existing_user = operation.checkName(username);
             if (existing_user) {
-                boolean existingSneaker = operation.querySneakerExists(sneaker.getid(), sneaker.getIndex());
+                boolean existingSneaker = operation.querySneakerExists(username, sneaker.getIndex());
                 if (existingSneaker) {
-                    boolean delete_sneaker = operation.deleteSneakerRow(sneaker.getid(), sneaker.getIndex());
+                    boolean delete_sneaker = operation.deleteSneakerRow(username, sneaker.getIndex());
                     if (delete_sneaker) {
                         return new LoginResponse("SessionID");
                     }
