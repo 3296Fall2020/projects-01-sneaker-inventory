@@ -235,27 +235,27 @@ public class DatabaseOperation {
 
         try {
             statement = connect.createStatement();
-            String rowCountQuery = "SELECT COUNT(*) FROM " + table;
-            results = statement.executeQuery(rowCountQuery);
-            results.next();
+            //String rowCountQuery = "SELECT COUNT(*) FROM " + table;
+            String rowCountQuery = "SELECT index_id FROM " + table;
+            results = statement.executeQuery(rowCountQuery); // get index_id rows
 
-            int row_count = results.getInt(1);
-            int counter = 3;
-
-            while (counter < row_count + 3) {
+            while (results.next()) { // for each index_id
+                int counter = results.getInt("index_id"); // grab index_id
 
                 String inventoryQuery = "SELECT * FROM " + table + " WHERE index_id = " + counter;
-                results = statement.executeQuery(inventoryQuery);
+                Statement secondStatement = connect.createStatement();
+                ResultSet row = secondStatement.executeQuery(inventoryQuery); // grab row based on index_id
+                //results = statement.executeQuery(inventoryQuery);
 
-                while (results.next()) {
-                    int index_id = results.getInt("index_id");
-                    String shoeName = results.getString("shoeName");
-                    String sku = results.getString("sku");
-                    String size = results.getString("size");
-                    String price = results.getString("price");
-                    String user_id = results.getString("user_id");
+                while (row.next()) {
+                    int index_id = row.getInt("index_id");
+                    String shoeName = row.getString("shoeName");
+                    String sku = row.getString("sku");
+                    String size = row.getString("size");
+                    String price = row.getString("price");
+                    String user_id = row.getString("user_id");
 
-                    JsonObject object = Json.createObjectBuilder()
+                    JsonObject object = Json.createObjectBuilder() // convert to json
                             .add("index_id", index_id)
                             .add("shoeName", shoeName)
                             .add("sku", sku)
