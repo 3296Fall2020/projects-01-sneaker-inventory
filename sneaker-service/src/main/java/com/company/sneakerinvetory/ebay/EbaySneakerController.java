@@ -15,14 +15,14 @@ package com.company.sneakerinvetory.ebay;
 public class EbaySneakerController {
 
     @RequestMapping(value = "/ebayAverage", method = RequestMethod.GET)
-    public EbayResponse handleEbayAverage(@RequestBody EbaySneaker ebaySneaker, HttpServletRequest request, HttpServletResponse response) throws IOException {
-        boolean isValid = EbaySneaker.validateEbaySneaker(ebaySneaker);
+    public EbayResponse handleEbayAverage(@RequestBody SneakerForm sneakerForm, HttpServletRequest request, HttpServletResponse response) throws IOException {
+        boolean isValid = SneakerForm.validateEbaySneaker(sneakerForm);
 
         boolean isRedirectedSession = HelloController.validate_or_redirect_session(request, response);
 
         if (!isRedirectedSession) {
             if (isValid) {
-                EbayThread thread = new EbayThread(ebaySneaker);
+                EbayThread thread = new EbayThread(sneakerForm);
                 thread.run();
                 return new EbayResponse(thread.getPrice());
             }

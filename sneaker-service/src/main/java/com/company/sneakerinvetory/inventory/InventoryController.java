@@ -20,6 +20,7 @@ public class InventoryController {
 
         boolean isRedirectedSession = HelloController.validate_or_redirect_session(request,response);
 
+        // verify session is still valid
         if (!isRedirectedSession) {
             DatabaseOperation operation = new DatabaseOperation();
             operation.createConnect();
@@ -33,6 +34,7 @@ public class InventoryController {
             }
             return new InventoryResponse("NaN");
         }
+        // respond that new session has been created
         return new InventoryResponse("newSession");
     }
 }

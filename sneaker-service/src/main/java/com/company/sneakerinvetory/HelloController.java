@@ -21,6 +21,7 @@ public class HelloController {
         return "Hello";
     }
 
+    // find if cookie exists within session
     public static boolean isCookieExist(HttpServletRequest request, String name){
         if (request.getCookies() != null){
             for (Cookie cookie : request.getCookies()){
@@ -32,6 +33,7 @@ public class HelloController {
         return false;
     }
 
+    // retrieve session cookie
     public static Cookie getCookie(HttpServletRequest request, String name){
         if (isCookieExist(request, name))
             for (Cookie cookie: request.getCookies()) {
@@ -41,6 +43,7 @@ public class HelloController {
         return null;
     }
 
+    // create/update cookie
     public static Cookie updateCookie(HttpServletRequest request, HttpServletResponse response, String name, String value){
         Cookie cookie = getCookie(request, name);
         if (cookie != null){
@@ -51,6 +54,7 @@ public class HelloController {
         return cookie;
     }
 
+    // invalidate current session, thus creating a new one
     public static HttpSession createSession(HttpServletRequest request, HttpServletResponse response){
         HttpSession session = request.getSession();
         session.invalidate();
@@ -61,6 +65,7 @@ public class HelloController {
         return session;
     }
 
+    // redirect session if session has restarted since last request
     public static Boolean validate_or_redirect_session(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession();
         if (session.isNew()){

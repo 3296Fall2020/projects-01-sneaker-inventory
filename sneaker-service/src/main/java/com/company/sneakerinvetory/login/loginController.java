@@ -29,27 +29,28 @@ public class loginController {
         // check that username/password exists in database
         DatabaseOperation operation = new DatabaseOperation();
         operation.createConnect();
-
-        // GET http
         boolean available_user = operation.signIn(userForm.getId(), userForm.getPassword());
 
         if (available_user){
+            // if exists, create new session with user logged in, and store credentials
             HttpSession session = HelloController.createSession(request, response);
             response.addCookie(new Cookie("username", userForm.getId()));
             response.addCookie(new Cookie("password", userForm.getPassword()));
             session.setAttribute("username", userForm.getId());
             session.setAttribute("password", userForm.getPassword());
 
+            //verify login response
             return new LoginResponse("login");
         }
 
         operation.closeConnection();
+        // wrong login response
         return  new LoginResponse("username or password incorrect");
 
     }
 
     @ResponseBody
-    @RequestMapping(value = "/register", method = RequestMethod.POST) // return error as string in future
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
     public LoginResponse handleRegister(@RequestBody LoginForm userForm, HttpServletRequest request, HttpServletResponse response) throws SQLException {
 
         DatabaseOperation operation = new DatabaseOperation();
@@ -67,10 +68,14 @@ public class loginController {
                 session.setAttribute("username", userForm.getId());
                 session.setAttribute("password", userForm.getPassword());
 
+                //verify register response
                 return new LoginResponse("register");
             }
+            //SQL error preventing adding user response
+            return new LoginResponse("SQL error");
         }
         operation.closeConnection();
+        //username is already taken response
         return new LoginResponse("NaN");
 
 
@@ -83,6 +88,7 @@ public class loginController {
         DatabaseOperation operation = new DatabaseOperation();
         operation.createConnect();
 
+        // invalidate current and create new session upon every logout request
         HttpSession session_new = HelloController.createSession(request, response);
         return new LoginResponse("session_new");
     }
@@ -91,6 +97,7 @@ public class loginController {
     @ResponseBody
     @RequestMapping(value = "/session", method = RequestMethod.GET)
     public LoginResponse sessionResponse(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+        // respond with sessionID
        HttpSession session = request.getSession();
        return new LoginResponse(session.getId());
     }

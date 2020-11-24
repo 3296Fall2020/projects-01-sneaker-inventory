@@ -6,8 +6,17 @@ public class Sneaker {
     String sku;
     String size;
     String price;
+    String marketValue;
 
     public Sneaker(String shoeName, String sku, String size, String price){
+        shoeName = shoeName.trim();
+        shoeName = shoeName.replaceAll(" ", "-");
+        sku = sku.trim();
+        sku = sku.replaceAll(" ", "-");
+        size = size.trim();
+        size = size.replaceAll(" ", ".");
+        price = price.trim();
+        price = price.replaceAll(" ", ".");
         this.shoeName = shoeName;
         this.sku = sku;
         this.size = size;
@@ -52,6 +61,14 @@ public class Sneaker {
 
     public void setPrice(String price) {
         this.price = price;
+    }
+
+    public String getMarketValue() {
+        return marketValue;
+    }
+
+    public void setMarketValue(String marketValue) {
+        this.marketValue = marketValue;
     }
 
     public static boolean validateAddSneaker(Sneaker sneaker) {

@@ -126,6 +126,7 @@ public class DatabaseOperation {
                     " sku VARCHAR(255) not NULL, " +
                     " size VARCHAR(255) not NULL, " +
                     " price VARCHAR(255) not NULL, " +
+                    " market VARCHAR(255), " +
                     " user_id VARCHAR(20) not NULL," +
                     " PRIMARY KEY (index_id),"+
                     " FOREIGN KEY ( user_id ) REFERENCES user_table (user_id))");
@@ -290,14 +291,13 @@ public class DatabaseOperation {
         }
         return true;
     }
-    public boolean insertData(String shoeName, String sku, String size ,  String price, String userID) // first entry needs to be entered via this method
+    public boolean insertData(String shoeName, String sku, String size ,  String price, String market, String userID) // first entry needs to be entered via this method
     {
         String tableName = userID.toLowerCase() + "_inventory";
         try {
             statement = connect.createStatement();
-            statement.executeUpdate("INSERT INTO "+ tableName + " (shoeName, sku, size, price, user_id) "+
-                    "VALUES ('" +shoeName+"', '" +sku+"', '"+size+"', '"+price+"', '"+userID+"' )" );
-
+            statement.executeUpdate("INSERT INTO "+ tableName + " (shoeName, sku, size, price, market, user_id) "+
+                    "VALUES ('" +shoeName+"', '" +sku+"', '"+size+"', '"+price+"', '"+market+"', + '"+userID+"' )" );
 
         }catch(SQLException throwables){
             throwables.printStackTrace();
@@ -305,12 +305,12 @@ public class DatabaseOperation {
         return true;
     }
 
-    public boolean editForm(int index, String shoeName, String sku, String size, String price, String userID){
+    public boolean editForm(int index, String shoeName, String sku, String size, String price, String market, String userID){
         String tableName = userID.toLowerCase() + "_inventory";
         try {
             statement = connect.createStatement();
             statement.executeUpdate("UPDATE "+ tableName + " SET shoeName = '" + shoeName + "', sku = '" + sku + "', size = '" + size
-                            + "', price = '" + price + "' WHERE index_id = " + index );
+                            + "', price = '" + price + "', market = '" + market + "' WHERE index_id = " + index );
         }catch(SQLException throwables){
             throwables.printStackTrace();
             return false;}

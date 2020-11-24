@@ -2,6 +2,9 @@ package com.company.sneakerinvetory.sneaker;
 
 import com.company.sneakerinvetory.HelloController;
 import com.company.sneakerinvetory.MySQLConnction.DatabaseOperation;
+import com.company.sneakerinvetory.ebay.EbayReader;
+import com.company.sneakerinvetory.ebay.EbayThread;
+import com.company.sneakerinvetory.ebay.SneakerForm;
 import com.company.sneakerinvetory.login.LoginResponse;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,7 +30,10 @@ public class SneakerController {
 
             boolean valid = Sneaker.validateAddSneaker(sneaker);
             if (valid) {
-                boolean createSneaker = operation.insertData(sneaker.getShoeName(), sneaker.getSku(), sneaker.getSize(), sneaker.getPrice(), (String) session.getAttribute("username"));
+                SneakerForm form = new SneakerForm(sneaker.getSku(),sneaker.getShoeName(),sneaker.getSize());
+                EbayThread runner = new EbayThread(form);
+                runner.run();
+                boolean createSneaker = operation.insertData(sneaker.getShoeName(), sneaker.getSku(), sneaker.getSize(), sneaker.getPrice(), runner.getPrice(), (String) session.getAttribute("username"));
                 if (createSneaker) {
                     return new LoginResponse("SessionID");
                 }
@@ -51,7 +57,10 @@ public class SneakerController {
             HttpSession session = request.getSession();
             boolean valid = Sneaker.validateEditSneaker(sneaker);
             if (valid) {
-                boolean createSneaker = operation.editForm(sneaker.getIndex(), sneaker.getShoeName(), sneaker.getSku(), sneaker.getSize(), sneaker.getPrice(), (String) session.getAttribute("username"));
+                SneakerForm form = new SneakerForm(sneaker.getSku(),sneaker.getShoeName(),sneaker.getSize());
+                EbayThread runner = new EbayThread(form);
+                runner.run();
+                boolean createSneaker = operation.editForm(sneaker.getIndex(), sneaker.getShoeName(), sneaker.getSku(), sneaker.getSize(), sneaker.getPrice(), runner.getPrice(), (String) session.getAttribute("username"));
                 if (createSneaker) {
                     return new LoginResponse("SessionID");
                 }
