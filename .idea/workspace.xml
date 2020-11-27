@@ -3,9 +3,32 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="0f967241-f01a-48f4-8776-6fb9dd6317ba" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/sneaker-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sneaker-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/js/components/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/components/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/js/components/loginForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/components/loginForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/js/components/logout.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/components/logout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/js/components/registerForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/components/registerForm.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +42,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Pull.Settings">
+    <option name="BRANCH" value="development" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
@@ -30,21 +56,26 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2019.2.1\plugins\maven\lib\maven3" />
+        <option name="mavenHome" value="C:\Program Files\JetBrains\IntelliJ IDEA 2020.2.3\plugins\maven\lib\maven3" />
       </MavenGeneralSettings>
     </option>
   </component>
   <component name="ProjectId" id="1jiXbODjFyI8kXC0Ps1x0XNp1am" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RunManager" selected="Application.driver">
@@ -108,8 +139,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1604287956971</updated>
+      <workItem from="1606432086780" duration="15251000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -121,12 +156,17 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1085" y="375" key="#com.intellij.ide.util.MemberChooser" timestamp="1604609226542">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1085" y="375" key="#com.intellij.ide.util.MemberChooser/2560.0.2560.1400/0.0.2560.1400/-1080.0.1080.1920@0.0.2560.1400" timestamp="1604609226542" />
+    <state x="782" y="178" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1605583787042">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="782" y="178" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605583787042" />
     <state x="1060" y="454" key="FileChooserDialogImpl" timestamp="1604288186335">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -167,9 +207,14 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="2517" height="484" key="GridCell.Tab.1.right/2560.0.2560.1400/0.0.2560.1400/-1080.0.1080.1920@0.0.2560.1400" timestamp="1605474998646" />
-    <state x="781" y="344" key="SettingsEditor" timestamp="1604610623243">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state x="687" y="155" key="Maven.ArtifactSearchDialog" timestamp="1605584029414">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="687" y="155" key="Maven.ArtifactSearchDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605584029414" />
+    <state x="586" y="189" key="SettingsEditor" timestamp="1605584117880">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="586" y="189" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1605584117880" />
     <state x="781" y="344" key="SettingsEditor/0.0.2560.1400/-1080.0.1080.1920/2560.0.2560.1440@0.0.2560.1400" timestamp="1604290905174" />
     <state x="781" y="344" key="SettingsEditor/2560.0.2560.1400/0.0.2560.1400/-1080.0.1080.1920@0.0.2560.1400" timestamp="1604610623243" />
     <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1604607766899">

@@ -24,8 +24,19 @@ function login () {
     var msgDiv = document.createElement("div");
     accountDiv.appendChild(msgDiv);
 
+    var data = {
+        id: "ternece",
+        password: "password"
+    };
+
     loginButton.onclick = function () {
-            alert("Do login here")
+        alert("Do login here")
+        var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
+        var theUrl = "http://54.172.190.202:8080/login";
+        xmlhttp.open("POST", theUrl);
+        xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xmlhttp.send(JSON.stringify(data));
+        console.log(data);
    };  // onclick function
 
     return accountDiv;
