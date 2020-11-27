@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.company</groupId>
-	<artifactId>ebaySneaker-invetory</artifactId>
+	<artifactId>sneakerForm-invetory</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ebaySneaker-invetory</name>
+	<name>sneakerForm-invetory</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
