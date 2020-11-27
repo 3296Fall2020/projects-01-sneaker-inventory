@@ -43,6 +43,7 @@ function registerForm () {
         return false;
     };
 
+
     //create an input element for User ID
     var id = document.createElement("input");
     id.setAttribute("type", "text");
@@ -72,7 +73,6 @@ function registerForm () {
     var registerButton = document.createElement("input");
     registerButton.setAttribute("type", "submit");
     registerButton.setAttribute("value", "Register");
-
 
     form.appendChild(id);
     form.appendChild(br.cloneNode());

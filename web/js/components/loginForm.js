@@ -43,6 +43,7 @@ function loginForm () {
         return false;
     };
 
+
     //create an input element for User ID
     var id = document.createElement("input");
     id.setAttribute("type", "text");
@@ -62,14 +63,12 @@ function loginForm () {
     loginButton.setAttribute("type", "submit");
     loginButton.setAttribute("value", "Log in");
 
-
-
     form.appendChild(id);
     form.appendChild(br.cloneNode());
     form.appendChild(password);
     form.appendChild(br.cloneNode());
     form.appendChild(loginButton);
-    form.appendChild(br.cloneNode());
+
 
     accountDiv.appendChild(form);
 

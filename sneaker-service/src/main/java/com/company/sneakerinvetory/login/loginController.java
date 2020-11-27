@@ -72,29 +72,20 @@ public class loginController {
         return new LoginResponse("NaN");
     }
 
+    // validate userID
     @ResponseBody
     @RequestMapping(value = "/session", method = RequestMethod.GET)
-    public LoginResponse sessionResponse(@RequestBody String userID) throws SQLException {
+    public LoginResponse sessionResponse(@RequestBody LoginForm userID) throws SQLException {
         DatabaseOperation operation = new DatabaseOperation();
         operation.createConnect();
-        boolean available_user = operation.checkName(userID);
+        boolean available_user = operation.checkName(userID.getId());
         if (available_user){
-            return new LoginResponse(operation.querySessionID(userID));
+            return new LoginResponse(operation.querySessionID(userID.getId()));
         }
-        return new LoginResponse(operation.querySessionID("NaN"));
-    }
 
-    @ResponseBody
-    @RequestMapping(value = "/addSneaker", method = RequestMethod.POST)
-    public LoginResponse sessionResponse(@RequestBody Sneaker sneaker){
-        DatabaseOperation operation = new DatabaseOperation();
-        operation.createConnect();
-        boolean createSneaker = operation.insertData(sneaker.getSneakerName(), sneaker.getSku(), sneaker.getSize(), sneaker.getDate(), sneaker.getPrice(), sneaker.getUserID());
-        if (createSneaker){
-            return new LoginResponse("SessionID");
-        }
         return new LoginResponse("NaN");
     }
+
 
 
 
