@@ -65,18 +65,19 @@ public class HelloController {
 
         session.setMaxInactiveInterval(60 * 6); //six minute expiration between requests
         updateCookie(request, response, "sessionID", session.getId());
-        response.setHeader("SET-COOKIE", "JSESSIONID="+session.getId() +";SameSite=none; secure");
-        response.setHeader("Set-Cookie", "JSESSIONID="+session.getId() +";SameSite=none; secure");
+        response.setHeader("SET-COOKIE", "JSESSIONID="+session.getId() +";SameSite=none; Secure");
+        response.setHeader("Set-Cookie", "JSESSIONID="+session.getId() +";SameSite=none; Secure");
 
         return session;
     }
 
     // redirect session if session has restarted since last request
     public static Boolean validate_or_redirect_session(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        HttpSession session = request.getSession();
-        if (session.isNew()){
-            session.setMaxInactiveInterval(60 * 60); //six minute expiration between requests
-            updateCookie(request, response, "sessionID", session.getId());
+
+       // String sessionValid = request.getHeader("JSESSIONID");
+        String sessionValid = request.getHeader("JSESSIONID");
+        if (sessionValid == null){
+            createSession(request,response);
           //  response.sendRedirect("https://terence21.github.io/terence/#/login");
 
             return  true;
