@@ -65,9 +65,9 @@ public class HelloController {
 
         session.setMaxInactiveInterval(60 * 6); //six minute expiration between requests
         updateCookie(request, response, "sessionID", session.getId());
-        response.setHeader("SET-COOKIE", "JSESSIONID="+session.getId() +";SameSite=none; Secure");
-        response.setHeader("Set-Cookie", "JSESSIONID="+session.getId() +";SameSite=none; Secure");
-
+        response.setHeader("SET-COOKIE", "JSESSIONID="+session.getId() +";SameSite=none; Secure; HttpOnly");
+        response.setHeader("Set-Cookie", "JSESSIONID="+session.getId() +";SameSite=none; Secure; HttpOnly");
+	//response.addCookie(new Cookie("JSESIONID", session.getId()));
         return session;
     }
 
@@ -77,6 +77,8 @@ public class HelloController {
        // String sessionValid = request.getHeader("JSESSIONID");
         Cookie[] cookies = request.getCookies();
         boolean sessionExists = false;
+	if (cookies != null){
+	System.out.println(cookies.length);
         for (Cookie cookie : cookies){
             if (cookie.getName().equals("JSESSIONID") && (cookie.getValue() != null)){
                 sessionExists = true;
@@ -90,6 +92,7 @@ public class HelloController {
 
             return  true;
         }
+	}
         return false;
     }
 

@@ -37,8 +37,8 @@ public class loginController {
         if (available_user){
             // if exists, create new session with user logged in, and store credentials
             HttpSession session = HelloController.createSession(request, response);
-            String userCookie = "username=" + userForm.getId() + "; SameSite=none; secure";
-            String passCookie = "password=" + userForm.getPassword() + "; SameSite=none; secure";
+            String userCookie = "username=" + userForm.getId() + "; SameSite=none; secure; HttpOnly";
+            String passCookie = "password=" + userForm.getPassword() + "; SameSite=none; secure; HttpOnly";
             response.addHeader("Set-Cookie", userCookie);
             response.addHeader("Set-Cookie", passCookie);
             response.setHeader("Access-Control-Allow-Origin", request.getHeader("Origin"));
@@ -46,6 +46,8 @@ public class loginController {
             response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
             response.setHeader("Access-Control-Max-Age", "3600");
             response.setHeader("Access-Control-Allow-Headers", "*");
+	    response.addCookie(new Cookie("username",userForm.getId()));
+	    response.addCookie(new Cookie("password",userForm.getPassword()));
             session.setAttribute("username", userForm.getId());
             session.setAttribute("password", userForm.getPassword());
 
