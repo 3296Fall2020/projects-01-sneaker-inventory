@@ -26,7 +26,7 @@ public class loginController {
 
     @ResponseBody
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public LoginResponse handleLogin(@RequestBody LoginForm userForm, HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws SQLException, IOException, ServletException {
+    public LoginResponse handleLogin(@RequestBody LoginForm userForm, HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
 
         // check that username/password exists in database
         DatabaseOperation operation = new DatabaseOperation();
@@ -46,7 +46,6 @@ public class loginController {
             response.setHeader("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With, remember-me");
             session.setAttribute("username", userForm.getId());
             session.setAttribute("password", userForm.getPassword());
-            chain.doFilter(request,response);
 
             //verify login response
             return new LoginResponse("login");

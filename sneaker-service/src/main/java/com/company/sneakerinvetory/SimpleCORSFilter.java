@@ -1,3 +1,4 @@
+/*
 package com.company.sneakerinvetory;
 
 
@@ -49,4 +50,4 @@ public class SimpleCORSFilter implements Filter {
     public void destroy() {
     }
 
-}
+}*/
