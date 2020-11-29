@@ -77,7 +77,7 @@ public class HelloController {
         if (session.isNew()){
             session.setMaxInactiveInterval(60 * 60); //six minute expiration between requests
             updateCookie(request, response, "sessionID", session.getId());
-            response.sendRedirect("https://terence21.github.io/terence/#/login");
+          //  response.sendRedirect("https://terence21.github.io/terence/#/login");
 
             return  true;
         }
