@@ -75,8 +75,16 @@ public class HelloController {
     public static Boolean validate_or_redirect_session(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
        // String sessionValid = request.getHeader("JSESSIONID");
-        String sessionValid = request.getHeader("JSESSIONID");
-        if (sessionValid == null){
+        Cookie[] cookies = request.getCookies();
+        boolean sessionExists = false;
+        for (Cookie cookie : cookies){
+            if (cookie.getName().equals("JSESSIONID") && (cookie.getValue() != null)){
+                sessionExists = true;
+            }
+            System.out.println(cookie.getName() + " : " + cookie.getValue());
+        }
+
+        if (!sessionExists){
             createSession(request,response);
           //  response.sendRedirect("https://terence21.github.io/terence/#/login");
 
