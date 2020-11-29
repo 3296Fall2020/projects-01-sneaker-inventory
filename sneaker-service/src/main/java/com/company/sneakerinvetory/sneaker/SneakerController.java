@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 //curl -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data '{ "index": "1", "id" : "tester", "SneakerName" : "yeezy 350 v2", "Sku" : "fu9006", "size" : "11", "price" : "$350" }' "http://localhost:8080/editSneaker"
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(origins = "https://54.172.190.202:443", allowedHeaders = "*")
 @RestController
 public class SneakerController {
 

@@ -2,7 +2,6 @@ package com.company.sneakerinvetory.inventory;
 
 import com.company.sneakerinvetory.HelloController;
 import com.company.sneakerinvetory.MySQLConnction.DatabaseOperation;
-import com.company.sneakerinvetory.login.LoginResponse;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +10,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 //curl -i -H "Accept: application/json" -H "Content-Type:application/json" -X GET --data '{ "id" : "tester"}' "http://localhost:8080/inventory"
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(origins = "https://54.172.190.202:443", allowedHeaders = "*")
 @RestController
 public class InventoryController {
     @ResponseBody
