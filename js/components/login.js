@@ -32,7 +32,7 @@ function login () {
     loginButton.onclick = function () {
         alert("Do login here")
         var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
-        var theUrl = "http://54.172.190.202:8080/login";
+        var theUrl = "https://54.172.190.202:443/login";
         xmlhttp.withCredentials = true;
         xmlhttp.open("POST", theUrl);
         xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
