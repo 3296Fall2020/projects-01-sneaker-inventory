@@ -33,6 +33,7 @@ function login () {
         alert("Do login here")
         var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
         var theUrl = "http://54.172.190.202:8080/login";
+        xmlhttp.withCredentials = true;
         xmlhttp.open("POST", theUrl);
         xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         xmlhttp.send(JSON.stringify(data));
