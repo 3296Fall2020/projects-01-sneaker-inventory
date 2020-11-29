@@ -2,16 +2,17 @@ package com.company.sneakerinvetory.login;
 
 import com.company.sneakerinvetory.HelloController;
 import com.company.sneakerinvetory.MySQLConnction.DatabaseOperation;
-import com.company.sneakerinvetory.login.LoginForm;
-import com.company.sneakerinvetory.login.LoginResponse;
 import com.company.sneakerinvetory.sneaker.Sneaker;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Random;
 
@@ -25,10 +26,11 @@ public class loginController {
 
     @ResponseBody
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public LoginResponse handleLogin(@RequestBody LoginForm userForm, HttpServletRequest request, HttpServletResponse response) throws SQLException {
+    public LoginResponse handleLogin(@RequestBody LoginForm userForm, HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws SQLException, IOException, ServletException {
 
         // check that username/password exists in database
         DatabaseOperation operation = new DatabaseOperation();
+
         operation.createConnect();
         boolean available_user = operation.signIn(userForm.getId(), userForm.getPassword());
 
@@ -37,8 +39,14 @@ public class loginController {
             HttpSession session = HelloController.createSession(request, response);
             response.addCookie(new Cookie("username", userForm.getId()));
             response.addCookie(new Cookie("password", userForm.getPassword()));
+            response.setHeader("Access-Control-Allow-Origin", request.getHeader("Origin"));
+            response.setHeader("Access-Control-Allow-Credentials", "true");
+            response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
+            response.setHeader("Access-Control-Max-Age", "3600");
+            response.setHeader("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With, remember-me");
             session.setAttribute("username", userForm.getId());
             session.setAttribute("password", userForm.getPassword());
+            chain.doFilter(request,response);
 
             //verify login response
             return new LoginResponse("login");
