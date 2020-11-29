@@ -39,8 +39,8 @@ public class loginController {
             HttpSession session = HelloController.createSession(request, response);
             String userCookie = "username=" + userForm.getId() + "; SameSite=none; secure";
             String passCookie = "password=" + userForm.getPassword() + "; SameSite=none; secure";
-            response.setHeader("Set-Cookie", userCookie);
-            response.setHeader("Set-Cookie", passCookie);
+            response.addHeader("Set-Cookie", userCookie);
+            response.addHeader("Set-Cookie", passCookie);
             response.setHeader("Access-Control-Allow-Origin", request.getHeader("Origin"));
             response.setHeader("Access-Control-Allow-Credentials", "true");
             response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
