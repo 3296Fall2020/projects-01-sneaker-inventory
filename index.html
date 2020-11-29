@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Sneaker Inventory</title>
+
+
+        <link href="style/commonStyle.css" rel="stylesheet" type="text/css" />
+        <link href="style/dropdownStyle.css" rel="stylesheet" type="text/css" />
+        <link href="style/account.css" rel="stylesheet" type="text/css" />
+        <link href="style/clickSort.css" rel="stylesheet" type="text/css" />
+
+    </head>
+    <body>
+        <div id="titleNav">
+            <div id="title">
+                Sneaker Inventory
+            </div>
+
+            <div id="nav">
+                <div class="dropdown">
+                    <a href="#/home">Home</a>
+                </div>
+                <div class="dropdown">
+                    <div class="dropHeader" onclick="dd.dropdown('accountDropDown')">Account</div>
+                    <div class="dropContent" id="accountDropDown">
+                        <a href="#/register">Register</a> <br/>
+                        <a href="#/login">Log In</a> <br/>
+                        <a href="#/logout">Log out</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <div class="dropHeader" onclick="dd.dropdown('inventoryDropDown')">Inventory</div>
+                    <div class="dropContent" id="inventoryDropDown">
+                        <a href="#/sneakerInventory">View Inventory</a>
+                        <a href="#/sneakerInventoryLive">View Inventory Live</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content">
+
+        </div>
+
+        <script src="js/reusable/dropdownFw.js"></script>
+        <script src="js/reusable/routeFw.js"></script>
+        <script src="js/reusable/ajax.js"></script>
+        <script src="js/reusable/makeClickSort.js"></script>
+        <script src="js/components/home.js"></script>
+        <script src="js/components/register.js"></script>
+        <script src="js/components/login.js"></script>
+        <script src="js/components/logout.js"></script>
+        <script src="js/components/loginForm.js"></script>
+        <script src="js/components/registerForm.js"></script>
+        <script src="js/components/sneakerInventory.js"></script>
+        <script src="js/components/sneakerInventoryLive.js"></script>
+
+
+
+        <script>
+            "use strict";
+            var myRoutes =[];
+
+            myRoutes['#/'] = home;  // page reload will run function home
+            myRoutes['#/home'] = home; // function home
+            myRoutes['#/register'] = registerForm; // function register
+            myRoutes['#/login'] = loginForm; // function login
+            myRoutes['#/logout'] = logout; // function logout
+            myRoutes['#/sneakerInventory'] = sneakerInventory; // function sneakerInventory
+            myRoutes['#/sneakerInventoryLive'] = sneakerInventoryLive; // function sneakerInventory
+
+
+            // routeFw returns an object that has private and public
+            // data members and methods.
+            // As input parameter, it takes an object with properties you can set
+            // or just accept whatever defaults are set by the framework.
+            myRoutes = routeFw({
+                routeArray: myRoutes,
+                contentId: "content"
+            });
+
+            // print the routes (check console.log)
+            myRoutes.printRoutes();
+
+
+        </script>
+
+
+        <script>
+            // pass to the dropdown framework the names of our two CSS styles
+            // that define our dropdowns (header style and content style). Also
+            // tell it how far off to the right you want the menus to disappear.
+            var dd = dropdownFw("dropHeader", "dropContent", "-500px");
+        </script>
+
+    </body>
+</html>
