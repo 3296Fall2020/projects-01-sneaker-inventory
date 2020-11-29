@@ -10,7 +10,7 @@ function logout () {
 
     logoutButton.onclick = function () {
         var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
-        var theUrl = "http://54.172.190.202:8080/logout";
+        var theUrl = "https://54.172.190.202:8080/logout";
 
         xmlhttp.open("DELETE", theUrl);
         alert("Logged out");

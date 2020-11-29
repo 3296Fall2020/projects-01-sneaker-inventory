@@ -21,7 +21,7 @@ function loginForm () {
         var json = JSON.stringify(object);
 
         var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
-        var theUrl = "http://54.172.190.202:8080/login";
+        var theUrl = "https://54.172.190.202:8080/login";
 
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200){
@@ -29,6 +29,7 @@ function loginForm () {
                 var result = JSON.parse(xmlhttp.response);
                 if (result.sessionID == 'login'){
                     alert("Login Success!");
+                    //sessionStorage.setItem("id", object.id)
                     window.location.hash = "#/sneakerInventory";
                 }else{
                     alert(result.sessionID);
