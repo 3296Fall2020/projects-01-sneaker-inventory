@@ -4,13 +4,14 @@ import com.company.sneakerinvetory.HelloController;
 import com.company.sneakerinvetory.MySQLConnction.DatabaseOperation;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
 //curl -i -H "Accept: application/json" -H "Content-Type:application/json" -X GET --data '{ "id" : "tester"}' "http://localhost:8080/inventory"
-@CrossOrigin(origins = "https://54.172.190.202:443", allowedHeaders = "*")
+@CrossOrigin(origins = "https://terence21.github.io", allowedHeaders = "*",allowCredentials = "true")
 @RestController
 public class InventoryController {
     @ResponseBody
@@ -21,6 +22,12 @@ public class InventoryController {
 
         // verify session is still valid
         if (!isRedirectedSession) {
+            response.setHeader("Access-Control-Allow-Origin", request.getHeader("Origin"));
+            response.setHeader("Access-Control-Allow-Credentials", "true");
+            response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
+            response.setHeader("Access-Control-Max-Age", "3600");
+            response.setHeader("Access-Control-Allow-Headers", "*");
+
             DatabaseOperation operation = new DatabaseOperation();
             operation.createConnect();
             String username = (String) request.getSession().getAttribute("username");

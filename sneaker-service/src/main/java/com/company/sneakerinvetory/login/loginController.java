@@ -19,7 +19,7 @@ import java.util.Random;
 // curl -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data '{ "id" : "ternece", "password" : "password"}' "http://localhost:8080/login"
 // tutorial: https://www.baeldung.com/spring-request-response-body
 // https://www.baeldung.com/spring-session 
-@CrossOrigin(origins = "https://tuc56947.github.io/sneaker-inventory-frontend/#", allowedHeaders = "*",allowCredentials = "true")
+@CrossOrigin(origins = "https://terence21.github.io", allowedHeaders = "*",allowCredentials = "true")
 @RestController
 public class loginController {
 
