@@ -1,5 +1,6 @@
 package com.company.sneakerinvetory;
 
+import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -64,6 +65,9 @@ public class HelloController {
 
         session.setMaxInactiveInterval(60 * 6); //six minute expiration between requests
         updateCookie(request, response, "sessionID", session.getId());
+        response.setHeader("SET-COOKIE", "JSESSIONID="+session.getId() +";SameSite=none; secure");
+        response.setHeader("Set-Cookie", "JSESSIONID="+session.getId() +";SameSite=none; secure");
+
         return session;
     }
 

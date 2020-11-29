@@ -37,12 +37,10 @@ public class loginController {
         if (available_user){
             // if exists, create new session with user logged in, and store credentials
             HttpSession session = HelloController.createSession(request, response);
-            Cookie user = new Cookie("username", userForm.getId());
-            user.setSecure(true);
-            Cookie pass = new Cookie("password", userForm.getPassword());
-            pass.setSecure(true);
-            response.addCookie(user);
-            response.addCookie(pass);
+            String userCookie = "username=" + userForm.getId() + "; SameSite=none; secure";
+            String passCookie = "password=" + userForm.getPassword() + "; SameSite=none; secure";
+            response.setHeader("Set-Cookie", userCookie);
+            response.setHeader("Set-Cookie", passCookie);
             response.setHeader("Access-Control-Allow-Origin", request.getHeader("Origin"));
             response.setHeader("Access-Control-Allow-Credentials", "true");
             response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
@@ -75,8 +73,10 @@ public class loginController {
             boolean addUser = operation.addUser(userForm.getId(), userForm.getPassword());
             if (addUser) {
                 HttpSession session = HelloController.createSession(request, response);
-                response.addCookie(new Cookie("username", userForm.getId()));
-                response.addCookie(new Cookie("password", userForm.getPassword()));
+                String userCookie = "username=" + userForm.getId() + "; SameSite=none; secure";
+                String passCookie = "password=" + userForm.getPassword() + "; SameSite=none; secure";
+                response.setHeader("Set-Cookie", userCookie);
+                response.setHeader("Set-Cookie", passCookie);
                 response.setHeader("Access-Control-Allow-Origin", request.getHeader("Origin"));
                 response.setHeader("Access-Control-Allow-Credentials", "true");
                 response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
