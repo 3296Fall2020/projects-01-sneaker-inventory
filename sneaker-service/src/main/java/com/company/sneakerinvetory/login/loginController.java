@@ -19,7 +19,7 @@ import java.util.Random;
 // curl -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data '{ "id" : "ternece", "password" : "password"}' "http://localhost:8080/login"
 // tutorial: https://www.baeldung.com/spring-request-response-body
 // https://www.baeldung.com/spring-session 
-@CrossOrigin(origins = "https://54.172.190.202:443", allowedHeaders = "*")
+@CrossOrigin(origins = "https://tuc56947.github.io/sneaker-inventory-frontend/#", allowedHeaders = "*",allowCredentials = "true")
 @RestController
 public class loginController {
 
@@ -37,8 +37,6 @@ public class loginController {
         if (available_user){
             // if exists, create new session with user logged in, and store credentials
             HttpSession session = HelloController.createSession(request, response);
-            Cookie cookie = new Cookie("username", userForm.getId());
-            cookie.setPath("/");
 
             response.addCookie(new Cookie("username", userForm.getId()));
             response.addCookie(new Cookie("password", userForm.getPassword()));
@@ -46,7 +44,7 @@ public class loginController {
             response.setHeader("Access-Control-Allow-Credentials", "true");
             response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
             response.setHeader("Access-Control-Max-Age", "3600");
-            response.setHeader("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With, remember-me");
+            response.setHeader("Access-Control-Allow-Headers", "*");
             session.setAttribute("username", userForm.getId());
             session.setAttribute("password", userForm.getPassword());
 
