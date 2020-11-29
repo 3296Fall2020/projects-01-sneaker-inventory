@@ -18,15 +18,16 @@ public class InventoryController {
     @RequestMapping(value = "/inventory", method = RequestMethod.GET)
     public InventoryResponse handleInventory(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
 
-        boolean isRedirectedSession = HelloController.validate_or_redirect_session(request,response);
+        response.setHeader("Access-Control-Allow-Origin", request.getHeader("Origin"));
+        response.setHeader("Access-Control-Allow-Credentials", "true");
+        response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
+        response.setHeader("Access-Control-Max-Age", "3600");
+        response.setHeader("Access-Control-Allow-Headers", "*");
 
+        boolean isRedirectedSession = HelloController.validate_or_redirect_session(request,response);
         // verify session is still valid
         if (!isRedirectedSession) {
-            response.setHeader("Access-Control-Allow-Origin", request.getHeader("Origin"));
-            response.setHeader("Access-Control-Allow-Credentials", "true");
-            response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
-            response.setHeader("Access-Control-Max-Age", "3600");
-            response.setHeader("Access-Control-Allow-Headers", "*");
+
 
             DatabaseOperation operation = new DatabaseOperation();
             operation.createConnect();

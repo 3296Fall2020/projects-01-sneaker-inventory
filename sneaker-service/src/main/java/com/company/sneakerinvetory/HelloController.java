@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@CrossOrigin(origins = "https://54.172.190.202:443", allowedHeaders = "*")
+@CrossOrigin(origins = "https://terence21.github.io", allowedHeaders = "*",allowCredentials = "true")
 @RestController
 public class HelloController {
 
@@ -73,7 +73,8 @@ public class HelloController {
         if (session.isNew()){
             session.setMaxInactiveInterval(60 * 60); //six minute expiration between requests
             updateCookie(request, response, "sessionID", session.getId());
-            response.sendRedirect("https://www.google.com");
+            response.sendRedirect("https://terence21.github.io/terence/#/login");
+
             return  true;
         }
         return false;
