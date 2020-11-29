@@ -15,13 +15,18 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 //curl -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data '{ "index": "1", "id" : "tester", "SneakerName" : "yeezy 350 v2", "Sku" : "fu9006", "size" : "11", "price" : "$350" }' "http://localhost:8080/editSneaker"
-@CrossOrigin(origins = "https://54.172.190.202:443", allowedHeaders = "*")
+@CrossOrigin(origins = "https://tuc56947.github.io", allowedHeaders = "*",allowCredentials = "true")
 @RestController
 public class SneakerController {
 
     @ResponseBody
     @RequestMapping(value = "/addSneaker", method = RequestMethod.POST)
     public LoginResponse handleAddSneaker(@RequestBody Sneaker sneaker, HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.setHeader("Access-Control-Allow-Origin", request.getHeader("Origin"));
+        response.setHeader("Access-Control-Allow-Credentials", "true");
+        response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
+        response.setHeader("Access-Control-Max-Age", "3600");
+        response.setHeader("Access-Control-Allow-Headers", "*");
         boolean isRedirectedSession = HelloController.validate_or_redirect_session(request,response);
 
         if (!isRedirectedSession) {
@@ -49,6 +54,11 @@ public class SneakerController {
     @ResponseBody
     @RequestMapping(value = "/editSneaker", method = RequestMethod.POST)
     public LoginResponse handleEditSneaker(@RequestBody Sneaker sneaker, HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.setHeader("Access-Control-Allow-Origin", request.getHeader("Origin"));
+        response.setHeader("Access-Control-Allow-Credentials", "true");
+        response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
+        response.setHeader("Access-Control-Max-Age", "3600");
+        response.setHeader("Access-Control-Allow-Headers", "*");
         boolean isRedirectedSession = HelloController.validate_or_redirect_session(request,response);
 
         if (!isRedirectedSession) {
@@ -76,6 +86,11 @@ public class SneakerController {
     @ResponseBody
     @RequestMapping(value= "/deleteSneaker", method = RequestMethod.POST)
     public LoginResponse handleDeleteSneaker(@RequestBody Sneaker sneaker, HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+        response.setHeader("Access-Control-Allow-Origin", request.getHeader("Origin"));
+        response.setHeader("Access-Control-Allow-Credentials", "true");
+        response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
+        response.setHeader("Access-Control-Max-Age", "3600");
+        response.setHeader("Access-Control-Allow-Headers", "*");
         boolean isRedirectedSession = HelloController.validate_or_redirect_session(request,response);
 
         if (!isRedirectedSession) {

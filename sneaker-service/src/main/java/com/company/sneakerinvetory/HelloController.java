@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@CrossOrigin(origins = "https://terence21.github.io", allowedHeaders = "*",allowCredentials = "true")
+@CrossOrigin(origins = "https://tuc56947.github.io", allowedHeaders = "*",allowCredentials = "true")
 @RestController
 public class HelloController {
 

@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 //curl -i -H "Accept: application/json" -H "Content-Type:application/json" -X GET --data '{ "id" : "tester"}' "http://localhost:8080/inventory"
-@CrossOrigin(origins = "https://terence21.github.io", allowedHeaders = "*",allowCredentials = "true")
+@CrossOrigin(origins = "https://tuc56947.github.io", allowedHeaders = "*",allowCredentials = "true")
 @RestController
 public class InventoryController {
     @ResponseBody

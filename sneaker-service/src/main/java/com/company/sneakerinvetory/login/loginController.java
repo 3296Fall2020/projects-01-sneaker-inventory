@@ -19,7 +19,7 @@ import java.util.Random;
 // curl -i -H "Accept: application/json" -H "Content-Type:application/json" -X POST --data '{ "id" : "ternece", "password" : "password"}' "http://localhost:8080/login"
 // tutorial: https://www.baeldung.com/spring-request-response-body
 // https://www.baeldung.com/spring-session 
-@CrossOrigin(origins = "https://terence21.github.io", allowedHeaders = "*",allowCredentials = "true")
+@CrossOrigin(origins = "https://tuc56947.github.io", allowedHeaders = "*",allowCredentials = "true")
 @RestController
 public class loginController {
 
@@ -77,6 +77,11 @@ public class loginController {
                 HttpSession session = HelloController.createSession(request, response);
                 response.addCookie(new Cookie("username", userForm.getId()));
                 response.addCookie(new Cookie("password", userForm.getPassword()));
+                response.setHeader("Access-Control-Allow-Origin", request.getHeader("Origin"));
+                response.setHeader("Access-Control-Allow-Credentials", "true");
+                response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
+                response.setHeader("Access-Control-Max-Age", "3600");
+                response.setHeader("Access-Control-Allow-Headers", "*");
                 session.setAttribute("username", userForm.getId());
                 session.setAttribute("password", userForm.getPassword());
 
