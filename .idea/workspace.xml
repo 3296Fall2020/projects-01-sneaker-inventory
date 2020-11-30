@@ -22,13 +22,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f967241-f01a-48f4-8776-6fb9dd6317ba" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="0f967241-f01a-48f4-8776-6fb9dd6317ba" name="Default Changelist" comment="changed request url to use https and port to 443">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/js/components/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/components/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/js/components/loginForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/components/loginForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/js/components/logout.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/components/logout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/js/components/registerForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/components/registerForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/js/reusable/ajax.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/reusable/ajax.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,6 +114,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.SneakerInvetoryApplication" />
       <item itemvalue="Application.SneakerInvetoryApplication (1)" />
@@ -128,6 +135,8 @@
         <item itemvalue="Application.driver" />
         <item itemvalue="Application.SneakerInvetoryApplication (1)" />
         <item itemvalue="Application.SneakerInvetoryApplication" />
+        <item itemvalue="Application.driver" />
+        <item itemvalue="Application.SneakerInvetoryApplication (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -167,9 +176,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="782" y="178" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605583787042" />
-    <state x="1060" y="454" key="FileChooserDialogImpl" timestamp="1604288186335">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state x="795" y="337" key="FileChooserDialogImpl" timestamp="1606661928720">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="795" y="337" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1606661928720" />
     <state x="1060" y="454" key="FileChooserDialogImpl/0.0.2560.1400/-1080.0.1080.1920/2560.0.2560.1440@0.0.2560.1400" timestamp="1604288186335" />
     <state width="2517" height="484" key="GridCell.Tab.0.bottom" timestamp="1605474998646">
       <screen x="0" y="0" width="2560" height="1400" />
@@ -217,6 +227,10 @@
     <state x="586" y="189" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1605584117880" />
     <state x="781" y="344" key="SettingsEditor/0.0.2560.1400/-1080.0.1080.1920/2560.0.2560.1440@0.0.2560.1400" timestamp="1604290905174" />
     <state x="781" y="344" key="SettingsEditor/2560.0.2560.1400/0.0.2560.1400/-1080.0.1080.1920@0.0.2560.1400" timestamp="1604610623243" />
+    <state x="641" y="192" key="new project wizard" timestamp="1606661857716">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="641" y="192" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1606661857716" />
     <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1604607766899">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
