@@ -26,6 +26,7 @@ function login () {
 
     loginButton.onclick = function () {
             alert("Do login here")
+
    };  // onclick function
 
     return accountDiv;

@@ -8,8 +8,41 @@ function loginForm () {
 
     //create a form
     var form = document.createElement("form");
-    form.setAttribute("method", "post");
-    form.setAttribute("action", "submit.php");
+    form.setAttribute("name", "myForm");
+    form.onsubmit = function loginSubmit() {
+
+        let myForm = document.forms["myForm"];
+        let formData = new FormData(myForm);
+
+        var object = {};
+        formData.forEach(function(value, key){
+            object[key] = value;
+        });
+        var json = JSON.stringify(object);
+
+        var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
+        var theUrl = "http://54.172.190.202:8080/login";
+
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200){
+                console.log(this.responseText);
+                var result = JSON.parse(xmlhttp.response);
+                if (result.sessionID == 'login'){
+                    alert("Login Success!");
+                    window.location.hash = "#/sneakerInventory";
+                }else{
+                    alert(result.sessionID);
+                }
+            }
+        };
+
+        xmlhttp.open("POST", theUrl);
+        xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xmlhttp.send(json);
+
+        return false;
+    };
+
 
     //create an input element for User ID
     var id = document.createElement("input");
@@ -35,6 +68,7 @@ function loginForm () {
     form.appendChild(password);
     form.appendChild(br.cloneNode());
     form.appendChild(loginButton);
+
 
     accountDiv.appendChild(form);
 
