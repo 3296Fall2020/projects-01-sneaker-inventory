@@ -22,7 +22,7 @@ function ajax(url, successCallBackFn, errorEle) {
 
             if (httpReq.status === 200) {   // 200 means file found (unlike 404 which means not found)
                 console.log("in ajax, js object printed next");
-
+                console.log(this.responseText);
                 var obj = JSON.parse(httpReq.response);
                 console.log(obj);
 
