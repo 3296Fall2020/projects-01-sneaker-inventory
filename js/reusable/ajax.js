@@ -3,6 +3,7 @@ function ajax(url, successCallBackFn, errorEle) {
     var httpReq;
     if (window.XMLHttpRequest) {
         httpReq = new XMLHttpRequest(); //For Firefox, Safari, Opera
+        httpReq.withCredentials = true;
     } else if (window.ActiveXObject) {
         httpReq = new ActiveXObject("Microsoft.XMLHTTP"); //For IE 5+
     } else {
