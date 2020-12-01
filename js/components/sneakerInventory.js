@@ -13,6 +13,8 @@ function sneakerInventory() {
             inventoryList[i].currentValue = list[i].currentValue;
             inventoryList[i].releaseDate = list[i].releaseDate;
             inventoryList[i].webUserId = list[i].webUserId;
+            inventoryList[i].update = `<img src=icons/update.png"` +
+                `" onclick= "window.location.hash = '#/editSneaker/'">`;
         }
 
         var params = {
