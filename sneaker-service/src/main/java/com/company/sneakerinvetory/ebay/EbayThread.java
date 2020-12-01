@@ -2,9 +2,9 @@ package com.company.sneakerinvetory.ebay;
 
 public class EbayThread implements Runnable {
 
-    EbaySneaker sneaker;
+    SneakerForm sneaker;
     String price;
-    public EbayThread(EbaySneaker sneaker){
+    public EbayThread(SneakerForm sneaker){
         this.sneaker = sneaker;
     }
     @Override

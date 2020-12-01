@@ -2,14 +2,21 @@ package com.company.sneakerinvetory.sneaker;
 
 public class Sneaker {
     int index;
-    String id;
     String shoeName;
     String sku;
     String size;
     String price;
+    String marketValue;
 
-    public Sneaker(String id, String shoeName, String sku, String size, String price){
-        this.id = id;
+    public Sneaker(String shoeName, String sku, String size, String price){
+        shoeName = shoeName.trim();
+        shoeName = shoeName.replaceAll(" ", "-");
+        sku = sku.trim();
+        sku = sku.replaceAll(" ", "-");
+        size = size.trim();
+        size = size.replaceAll(" ", ".");
+        price = price.trim();
+        price = price.replaceAll(" ", ".");
         this.shoeName = shoeName;
         this.sku = sku;
         this.size = size;
@@ -22,14 +29,6 @@ public class Sneaker {
 
     public void setIndex(int index) {
         this.index = index;
-    }
-
-    public String getid() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getShoeName() {
@@ -64,16 +63,24 @@ public class Sneaker {
         this.price = price;
     }
 
+    public String getMarketValue() {
+        return marketValue;
+    }
+
+    public void setMarketValue(String marketValue) {
+        this.marketValue = marketValue;
+    }
+
     public static boolean validateAddSneaker(Sneaker sneaker) {
-        return sneaker.getid() != null && sneaker.getPrice() != null && sneaker.getSize() != null && sneaker.getSku() != null && sneaker.getShoeName() != null;
+        return  sneaker.getPrice() != null && sneaker.getSize() != null && sneaker.getSku() != null && sneaker.getShoeName() != null;
 
     }
     public static boolean validateEditSneaker(Sneaker sneaker){
-        return sneaker.getIndex() != 0&& sneaker.getid() != null && sneaker.getPrice() != null && sneaker.getSize() != null && sneaker.getSku() != null && sneaker.getShoeName() != null;
+        return sneaker.getIndex() != 0 && sneaker.getPrice() != null && sneaker.getSize() != null && sneaker.getSku() != null && sneaker.getShoeName() != null;
     }
 
     public static void printSneaker(Sneaker sneaker){
-        System.out.println(sneaker.getIndex() + "\t" + sneaker.getid() + "\t" + sneaker.getShoeName() + "\t" + sneaker.getSku() + "\t" +
+        System.out.println(sneaker.getIndex() + "\t" + sneaker.getShoeName() + "\t" + sneaker.getSku() + "\t" +
                 sneaker.getSize() + "\t" + sneaker.getPrice());
     }
 }

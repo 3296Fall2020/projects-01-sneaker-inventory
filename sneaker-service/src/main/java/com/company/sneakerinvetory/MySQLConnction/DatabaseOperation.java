@@ -126,6 +126,7 @@ public class DatabaseOperation {
                     " sku VARCHAR(255) not NULL, " +
                     " size VARCHAR(255) not NULL, " +
                     " price VARCHAR(255) not NULL, " +
+                    " market VARCHAR(255), " +
                     " user_id VARCHAR(20) not NULL," +
                     " PRIMARY KEY (index_id),"+
                     " FOREIGN KEY ( user_id ) REFERENCES user_table (user_id))");
@@ -134,7 +135,7 @@ public class DatabaseOperation {
 
     }
 
-    public boolean signIn(String userID, String password, String sessionID) throws SQLException {
+    public boolean signIn(String userID, String password) throws SQLException {
         ResultSet results = null;
 
         try {
@@ -147,15 +148,11 @@ public class DatabaseOperation {
 
         while(results.next()) {
             try {
-                if (!results.getString("user_password").equals(password)){ // if no match
+                if (results.getString("user_password").equals(password)){ // if no match
                     //System.out.println("Please check the username and password");
-                    return  false;
+                    return  true;
                 }
-                else if (password.equals(results.getString("user_password"))) { // only 1 col retrieved
-                    //System.out.println("User can sign in"); // if match
-                    statement.executeUpdate("UPDATE user_table SET sessionID = '" + sessionID + "' WHERE user_id ='"+userID+"'");
-                    return true;
-                }
+
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
                 return false;
@@ -239,27 +236,27 @@ public class DatabaseOperation {
 
         try {
             statement = connect.createStatement();
-            String rowCountQuery = "SELECT COUNT(*) FROM " + table;
-            results = statement.executeQuery(rowCountQuery);
-            results.next();
+            //String rowCountQuery = "SELECT COUNT(*) FROM " + table;
+            String rowCountQuery = "SELECT index_id FROM " + table;
+            results = statement.executeQuery(rowCountQuery); // get index_id rows
 
-            int row_count = results.getInt(1);
-            int counter = 3;
-
-            while (counter < row_count + 3) {
+            while (results.next()) { // for each index_id
+                int counter = results.getInt("index_id"); // grab index_id
 
                 String inventoryQuery = "SELECT * FROM " + table + " WHERE index_id = " + counter;
-                results = statement.executeQuery(inventoryQuery);
+                Statement secondStatement = connect.createStatement();
+                ResultSet row = secondStatement.executeQuery(inventoryQuery); // grab row based on index_id
+                //results = statement.executeQuery(inventoryQuery);
 
-                while (results.next()) {
-                    int index_id = results.getInt("index_id");
-                    String shoeName = results.getString("shoeName");
-                    String sku = results.getString("sku");
-                    String size = results.getString("size");
-                    String price = results.getString("price");
-                    String user_id = results.getString("user_id");
+                while (row.next()) {
+                    int index_id = row.getInt("index_id");
+                    String shoeName = row.getString("shoeName");
+                    String sku = row.getString("sku");
+                    String size = row.getString("size");
+                    String price = row.getString("price");
+                    String user_id = row.getString("user_id");
 
-                    JsonObject object = Json.createObjectBuilder()
+                    JsonObject object = Json.createObjectBuilder() // convert to json
                             .add("index_id", index_id)
                             .add("shoeName", shoeName)
                             .add("sku", sku)
@@ -294,14 +291,13 @@ public class DatabaseOperation {
         }
         return true;
     }
-    public boolean insertData(String shoeName, String sku, String size ,  String price, String userID) // first entry needs to be entered via this method
+    public boolean insertData(String shoeName, String sku, String size ,  String price, String market, String userID) // first entry needs to be entered via this method
     {
         String tableName = userID.toLowerCase() + "_inventory";
         try {
             statement = connect.createStatement();
-            statement.executeUpdate("INSERT INTO "+ tableName + " (shoeName, sku, size, price, user_id) "+
-                    "VALUES ('" +shoeName+"', '" +sku+"', '"+size+"', '"+price+"', '"+userID+"' )" );
-
+            statement.executeUpdate("INSERT INTO "+ tableName + " (shoeName, sku, size, price, market, user_id) "+
+                    "VALUES ('" +shoeName+"', '" +sku+"', '"+size+"', '"+price+"', '"+market+"', + '"+userID+"' )" );
 
         }catch(SQLException throwables){
             throwables.printStackTrace();
@@ -309,12 +305,12 @@ public class DatabaseOperation {
         return true;
     }
 
-    public boolean editForm(int index, String shoeName, String sku, String size, String price, String userID){
+    public boolean editForm(int index, String shoeName, String sku, String size, String price, String market, String userID){
         String tableName = userID.toLowerCase() + "_inventory";
         try {
             statement = connect.createStatement();
             statement.executeUpdate("UPDATE "+ tableName + " SET shoeName = '" + shoeName + "', sku = '" + sku + "', size = '" + size
-                            + "', price = '" + price + "' WHERE index_id = " + index );
+                            + "', price = '" + price + "', market = '" + market + "' WHERE index_id = " + index );
         }catch(SQLException throwables){
             throwables.printStackTrace();
             return false;}

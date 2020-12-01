@@ -11,6 +11,9 @@ import com.gargoylesoftware.htmlunit.javascript.JavaScriptErrorListener;
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
@@ -21,11 +24,12 @@ public class EbayReader {
     WebClient client;
     HtmlPage page;
     String BASE_URL = "https://www.ebay.com";
-    private EbaySneaker ebaySneaker;
+    private SneakerForm sneakerForm;
 
-    public EbayReader(EbaySneaker ebaySneaker){
-        this.ebaySneaker = ebaySneaker;
+    public EbayReader(SneakerForm sneakerForm) {
+        this.sneakerForm = sneakerForm;
     }
+
     public class DummyJavascriptErrorListener implements JavaScriptErrorListener {
 
         @Override
@@ -39,7 +43,7 @@ public class EbayReader {
         }
 
         @Override
-        public void malformedScriptURL(HtmlPage arg0, String arg1,   MalformedURLException arg2) {
+        public void malformedScriptURL(HtmlPage arg0, String arg1, MalformedURLException arg2) {
             // TODO Auto-generated method stub
         }
 
@@ -49,6 +53,7 @@ public class EbayReader {
 
         }
     }
+
     public class DummyIncorrectnessListener implements IncorrectnessListener {
 
         @Override
@@ -56,7 +61,8 @@ public class EbayReader {
             // nothing to do ...
         }
     }
-    public String getAveragePrice(){
+
+    public String getAveragePrice() {
 
         try {
             client = new WebClient();
@@ -66,12 +72,13 @@ public class EbayReader {
             client.getOptions().setUseInsecureSSL(true);
             client.setJavaScriptErrorListener(new DummyJavascriptErrorListener());
             client.setIncorrectnessListener(new DummyIncorrectnessListener());
-           // client.waitForBackgroundJavaScriptStartingBefore(1000);
-           // client.waitForBackgroundJavaScript(1000);
+            // client.waitForBackgroundJavaScriptStartingBefore(1000);
+            // client.waitForBackgroundJavaScript(1000);
             page = client.getPage(BASE_URL);
 
+
             HtmlInput searchBar = page.getFirstByXPath("//*[@id=\"gh-ac\"]");
-            searchBar.setValueAttribute(ebaySneaker.getSku() + " " + ebaySneaker.getSize()); // try search with sie
+            searchBar.setValueAttribute(sneakerForm.getSku() + " " + sneakerForm.getSize()); // try search with sie
             HtmlForm form = searchBar.getEnclosingForm();
 
             page = client.getPage(form.getWebRequest(null));
@@ -88,9 +95,9 @@ public class EbayReader {
             DomElement result_element = page.getFirstByXPath("//*[@id=\"mainContent\"]/div[1]/div/div[2]/div[1]/div[1]/h1/span[1]");
             int num_results = Integer.parseInt(result_element.getTextContent());
 
-            if (num_results < 1){ // if no results... try search without size
+            if (num_results < 1) { // if no results... try search without size
                 searchBar = page.getFirstByXPath("//*[@id=\"gh-ac\"]");
-                searchBar.setValueAttribute(ebaySneaker.getSku());
+                searchBar.setValueAttribute(sneakerForm.getSku());
                 form = searchBar.getEnclosingForm();
 
                 page = client.getPage(form.getWebRequest(null));
@@ -108,35 +115,34 @@ public class EbayReader {
                 num_results = Integer.parseInt(result_element.getTextContent());
             }
             if (num_results > 0) {
-            //filter button.. expand to get options
-            HtmlButton button = page.getFirstByXPath("//button[@class=\"fake-menu-button__button expand-btn expand-btn--small expand-btn--secondary\"]");
-            button.click();
+                //filter button.. expand to get options
+                HtmlButton button = page.getFirstByXPath("//button[@class=\"fake-menu-button__button expand-btn expand-btn--small expand-btn--secondary\"]");
+                button.click();
 
-            List<HtmlAnchor> filterAnchors = page.getAnchors();
-            String filter_url = "";
-            for (HtmlAnchor filterAnchor : filterAnchors) {
-                String url = filterAnchor.getHrefAttribute();
-                if (url.contains("sop=15")) { // sop=15 href for lowest value first
-                    filter_url = url;
+                List<HtmlAnchor> filterAnchors = page.getAnchors();
+                String filter_url = "";
+                for (HtmlAnchor filterAnchor : filterAnchors) {
+                    String url = filterAnchor.getHrefAttribute();
+                    if (url.contains("sop=15")) { // sop=15 href for lowest value first
+                        filter_url = url;
+                    }
                 }
-            }
-            page = client.getPage(filter_url); //go to new link sorted with lowest value first
+                page = client.getPage(filter_url); //go to new link sorted with lowest value first
 
 
                 DomElement price_element = page.getFirstByXPath("//span[@class='s-item__price'][1]"); //find price of first element in table
                 lowest_price = price_element.getTextContent();
+
                 return lowest_price;
-            } else{
-                return  "no results: bad name, unavailable size, or bad sku";
+            } else {
+                return "no results: bad name, unavailable size, or bad sku";
             }
 
 
-        } catch(Exception e){
+        } catch (Exception e) {
             return "NaN";
         }
 
     }
-
-
 
 }

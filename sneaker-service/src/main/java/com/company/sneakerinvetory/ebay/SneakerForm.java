@@ -3,13 +3,13 @@ package com.company.sneakerinvetory.ebay;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class EbaySneaker {
+public class SneakerForm {
     private String sku;
     private String name;
     private String size;
 
     @JsonCreator
-    public EbaySneaker(@JsonProperty("sku") String sku,@JsonProperty("name") String name,@JsonProperty("size") String size){
+    public SneakerForm(@JsonProperty("sku") String sku, @JsonProperty("name") String name, @JsonProperty("size") String size){
         this.sku  = sku;
         //this.name = name.trim();
         this.name = name;
@@ -43,7 +43,7 @@ public class EbaySneaker {
         this.size = size;
     }
 
-    public static boolean validateEbaySneaker(EbaySneaker sneaker){
+    public static boolean validateEbaySneaker(SneakerForm sneaker){
         return sneaker.getName() != null && sneaker.getSize() != null && sneaker.getSku() != null;
     }
 
