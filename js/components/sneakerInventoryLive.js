@@ -24,6 +24,11 @@ function sneakerInventoryLive() {
 
         var myClickSort = makeClickSort(params);
         clickSortContainer.appendChild(myClickSort);
+
+        var addSneaker = document.createElement("button");
+        addSneaker.innerHTML = "Add Sneaker";
+        addSneaker.onclick = function() {window.location.hash = "#/addSneaker"};
+        clickSortContainer.appendChild(addSneaker);
     }
     return clickSortContainer;
 }

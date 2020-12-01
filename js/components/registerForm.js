@@ -21,8 +21,7 @@ function registerForm () {
         var json = JSON.stringify(object);
 
         var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
-        xmlhttp.withCredentials = true;
-        var theUrl = "https://54.172.190.202:443/register";
+        var theUrl = "http://54.172.190.202:443/register";
 
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200){
