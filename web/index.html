@@ -36,7 +36,8 @@ and open the template in the editor.
                 <div class="dropdown">
                     <div class="dropHeader" onclick="dd.dropdown('inventoryDropDown')">Inventory</div>
                     <div class="dropContent" id="inventoryDropDown">
-                        <a href="#/sneakerInventory">View Inventory</a>
+                        <a href="#/sneakerInventory">View Inventory</a> <br/>
+                        <a href="#/sneakerInventoryLive">View Inventory Live</a>
                     </div>
                 </div>
             </div>
@@ -56,6 +57,10 @@ and open the template in the editor.
         <script src="js/components/loginForm.js"></script>
         <script src="js/components/registerForm.js"></script>
         <script src="js/components/sneakerInventory.js"></script>
+        <script src="js/components/sneakerInventoryLive.js"></script>
+        <script src="js/components/addSneaker.js"></script>
+        <script src="js/components/editSneaker.js"></script>
+        <script src="js/components/deleteSneaker.js"></script>
 
 
 
@@ -69,7 +74,10 @@ and open the template in the editor.
             myRoutes['#/login'] = loginForm; // function login
             myRoutes['#/logout'] = logout; // function logout
             myRoutes['#/sneakerInventory'] = sneakerInventory; // function sneakerInventory
-
+            myRoutes['#/sneakerInventoryLive'] = sneakerInventoryLive; // function sneakerInventory
+            myRoutes['#/addSneaker'] = addSneaker; // function sneakerInventory
+            myRoutes['#/editSneaker'] = editSneaker; // function editSneaker
+            myRoutes['#/deleteSneaker'] = deleteSneaker; // function deleteSneaker
 
             // routeFw returns an object that has private and public
             // data members and methods.

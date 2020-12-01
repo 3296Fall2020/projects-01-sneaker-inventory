@@ -22,9 +22,15 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f967241-f01a-48f4-8776-6fb9dd6317ba" name="Default Changelist" comment="ajax.js changed to fix jason parse error">
+    <list default="true" id="0f967241-f01a-48f4-8776-6fb9dd6317ba" name="Default Changelist" comment="request ip's port changed from 8080 to 443">
+      <change afterPath="$PROJECT_DIR$/web/icon/delete.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/icon/update.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/web/js/components/addSneaker.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/js/components/deleteSneaker.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/js/components/editSneaker.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/js/components/sneakerInventoryLive.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/js/components/loginForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/components/loginForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/js/components/logout.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/components/logout.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/js/components/registerForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/components/registerForm.js" afterDir="false" />
@@ -72,7 +78,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/web/style" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/web/js/components" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -80,8 +86,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\David\IdeaProjects\projects-01-sneaker-inventory\web\style" />
       <recent name="C:\Users\David\IdeaProjects\projects-01-sneaker-inventory\web\js\components" />
+      <recent name="C:\Users\David\IdeaProjects\projects-01-sneaker-inventory\web\icon" />
+      <recent name="C:\Users\David\IdeaProjects\projects-01-sneaker-inventory\web\style" />
     </key>
   </component>
   <component name="RunManager" selected="Application.driver">
@@ -167,7 +174,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606752025336</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="request ip's port changed from 8080 to 443">
+      <created>1606757220644</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1606757220644</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -187,7 +201,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="ajax.js changed to fix jason parse error" />
-    <option name="LAST_COMMIT_MESSAGE" value="ajax.js changed to fix jason parse error" />
+    <MESSAGE value="request ip's port changed from 8080 to 443" />
+    <option name="LAST_COMMIT_MESSAGE" value="request ip's port changed from 8080 to 443" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1085" y="375" key="#com.intellij.ide.util.MemberChooser" timestamp="1604609226542">
