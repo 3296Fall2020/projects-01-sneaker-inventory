@@ -13,8 +13,8 @@ function sneakerInventory() {
             inventoryList[i].currentValue = list[i].currentValue;
             inventoryList[i].releaseDate = list[i].releaseDate;
             inventoryList[i].webUserId = list[i].webUserId;
-            inventoryList[i].update = `<img src=icon/update.png onclick= "window.location.hash = '#/editSneaker/'">`;
-            inventoryList[i].delete = `<img src=icon/delete.png onclick= "window.location.hash = '#/deleteSneaker/'">`;
+            inventoryList[i].update = `<img src=icon/update.png onclick= "window.location.hash = '#/editSneaker'">`;
+            inventoryList[i].delete = `<img src=icon/delete.png onclick= "window.location.hash = '#/deleteSneaker'">`;
         }
 
         var params = {

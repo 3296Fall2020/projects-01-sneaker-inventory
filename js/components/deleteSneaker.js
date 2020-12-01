@@ -3,7 +3,7 @@ function deleteSneaker () {
     accountDiv.classList.add("account");
 
     var confirm = document.createElement("span");
-    confirm.innerHTML("Confirm Delete  ");
+    confirm.innerHTML = "Confirm Delete  ";
     accountDiv.appendChild(confirm);
 
     var deleteButton = document.createElement("input");
@@ -11,7 +11,7 @@ function deleteSneaker () {
     deleteButton.setAttribute("value", "Delete Sneaker");
     accountDiv.appendChild(deleteButton);
 
-    logoutButton.onclick = function () {
+    deleteButton.onclick = function () {
         var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
         var theUrl = "https://54.172.190.202:443/deleteSneaker";
 
