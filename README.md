@@ -56,3 +56,7 @@ The above block shows various functions the database needs to handle. By changin
  Here we found out SQL calls were case sensitive, and others were not. This meant Strings were not handled in a uniform manner meaning case now becomes a defining identifier, which we did not want.
  
 We learnt SQL in java, SQL in mySQLWorkBench and SQL Developer handle data types differently, so code needed to be implemented in a certain way to account for how java handled the Strings that would become the SQL queries/statements.  Example, a table create statement in MySQLWorkbench would not execute in java because of how certain data types were defined and some constrained were not supported. 
+
+Frontend:
+
+Testing for Frontend webpage was done manually.  Since Frontend of webpage was mostly visual in website, testing was done for each page by clicking buttons and see if click redirect to supposed page with correct link.  Page was also reviewed to see if the output rendered on each page was correct.  For forms that require input from user, testing was done by clicking submit buttons without user input and see if page displays correct error messages, and with correct input whether correct success message pops up.
