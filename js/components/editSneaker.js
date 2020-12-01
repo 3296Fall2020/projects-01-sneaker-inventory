@@ -83,7 +83,7 @@ function editSneaker () {
     //create a submit button
     var insertButton = document.createElement("input");
     insertButton.setAttribute("type", "submit");
-    insertButton.setAttribute("value", "Add Sneaker");
+    insertButton.setAttribute("value", "Edit Sneaker");
 
 
     form.appendChild(shoeName);

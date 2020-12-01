@@ -22,6 +22,6 @@
     white-space: nowrap; /* do not want multi word column headings (or sort icon) to wrap */
 }
 
-.clickSort tbody img{
+.clickSort tbody img:not(icon){
     width: 150px;     /* auto makes left and right margins the same, means centered */
 }
