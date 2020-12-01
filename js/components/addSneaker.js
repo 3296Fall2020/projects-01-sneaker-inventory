@@ -21,7 +21,7 @@ function addSneaker () {
         var json = JSON.stringify(object);
 
         var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
-        var theUrl = "http://54.172.190.202:443/addSneaker";
+        var theUrl = "https://54.172.190.202:443/addSneaker";
 
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200){
