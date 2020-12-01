@@ -22,20 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f967241-f01a-48f4-8776-6fb9dd6317ba" name="Default Changelist" comment="request ip's port changed from 8080 to 443">
-      <change afterPath="$PROJECT_DIR$/web/icon/delete.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/icon/update.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/js/components/addSneaker.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/js/components/deleteSneaker.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/js/components/editSneaker.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/js/components/sneakerInventoryLive.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/js/components/loginForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/components/loginForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/js/components/logout.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/components/logout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/js/components/registerForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/components/registerForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/js/components/sneakerInventory.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/components/sneakerInventory.js" afterDir="false" />
-    </list>
+    <list default="true" id="0f967241-f01a-48f4-8776-6fb9dd6317ba" name="Default Changelist" comment="addSneaker, editSneaker, deleteSneaker frontend page added.  Currently not working due to error connecting to backend (cookie/session issue)" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -181,7 +168,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606757220644</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="addSneaker, editSneaker, deleteSneaker frontend page added.  Currently not working due to error connecting to backend (cookie/session issue)">
+      <created>1606829780921</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1606829780921</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -202,7 +196,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="ajax.js changed to fix jason parse error" />
     <MESSAGE value="request ip's port changed from 8080 to 443" />
-    <option name="LAST_COMMIT_MESSAGE" value="request ip's port changed from 8080 to 443" />
+    <MESSAGE value="addSneaker, editSneaker, deleteSneaker frontend page added.  Currently not working due to error connecting to backend (cookie/session issue)" />
+    <option name="LAST_COMMIT_MESSAGE" value="addSneaker, editSneaker, deleteSneaker frontend page added.  Currently not working due to error connecting to backend (cookie/session issue)" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1085" y="375" key="#com.intellij.ide.util.MemberChooser" timestamp="1604609226542">
@@ -258,12 +253,28 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="687" y="155" key="Maven.ArtifactSearchDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605584029414" />
+    <state x="0" y="82" key="MergeDialog" timestamp="1606830180839">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="0" y="82" key="MergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606830180839" />
+    <state x="349" y="276" key="MultipleFileMergeDialog" timestamp="1606830180853">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="349" y="276" key="MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606830180853" />
     <state x="586" y="189" key="SettingsEditor" timestamp="1605584117880">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="586" y="189" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1605584117880" />
     <state x="781" y="344" key="SettingsEditor/0.0.2560.1400/-1080.0.1080.1920/2560.0.2560.1440@0.0.2560.1400" timestamp="1604290905174" />
     <state x="781" y="344" key="SettingsEditor/2560.0.2560.1400/0.0.2560.1400/-1080.0.1080.1920@0.0.2560.1400" timestamp="1604610623243" />
+    <state x="303" y="249" key="Vcs.Push.Dialog.v2" timestamp="1606830191715">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="303" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1606830191715" />
+    <state x="449" y="414" key="git4idea.ui.GitStashDialog" timestamp="1606830218270">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="449" y="414" key="git4idea.ui.GitStashDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606830218270" />
     <state x="641" y="192" key="new project wizard" timestamp="1606661857716">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
