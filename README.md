@@ -43,3 +43,16 @@ Data regarding sneaker collections will be stored in a MySQL database, and commu
 - Jsoup/HtmlUnit(Web Scraping)
 -	HTML/CSS/JavaScript (GUI where user will input and view their inventory)
 
+
+## **Testing**
+
+Database:
+
+![GitHub Logo](database_testing.png)
+
+As the project is built from the ground up, the only way to really test was to write code for results. As functionality was added to the database, each function was tested for accuracy and consistency.
+
+The above block shows various functions the database needs to handle. By changing the values, we were able to see how accurately data entered the tables and how reliable the code was at retrieving data by comparing expected results with real results.
+ Here we found out SQL calls were case sensitive, and others were not. This meant Strings were not handled in a uniform manner meaning case now becomes a defining identifier, which we did not want.
+ 
+We learnt SQL in java, SQL in mySQLWorkBench and SQL Developer handle data types differently, so code needed to be implemented in a certain way to account for how java handled the Strings that would become the SQL queries/statements.  Example, a table create statement in MySQLWorkbench would not execute in java because of how certain data types were defined and some constrained were not supported. 
