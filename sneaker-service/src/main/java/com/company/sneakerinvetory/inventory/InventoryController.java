@@ -32,12 +32,12 @@ public class InventoryController {
             DatabaseOperation operation = new DatabaseOperation();
             operation.createConnect();
             String username = (String) request.getSession().getAttribute("username");
-            boolean goodName = operation.checkName(username);
-            if (goodName) {
+           // boolean goodName = operation.checkName(username);
+           // if (goodName) {
                 String json = operation.queryInventory(username);
                 if (!json.equals("NaN")) {
                     return new InventoryResponse(json);
-                }
+           //     }
             }
             return new InventoryResponse("NaN");
         }
