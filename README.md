@@ -46,7 +46,7 @@ Data regarding sneaker collections will be stored in a MySQL database, and commu
 
 ## **Testing**
 
-Database:
+##### Database:
 
 ![GitHub Logo](database_testing.png)
 
@@ -57,6 +57,12 @@ The above block shows various functions the database needs to handle. By changin
  
 We learnt SQL in java, SQL in mySQLWorkBench and SQL Developer handle data types differently, so code needed to be implemented in a certain way to account for how java handled the Strings that would become the SQL queries/statements.  Example, a table create statement in MySQLWorkbench would not execute in java because of how certain data types were defined and some constrained were not supported. 
 
-Frontend:
+##### Frontend:
 
 Testing for Frontend webpage was done manually.  Since Frontend of webpage was mostly visual in website, testing was done for each page by clicking buttons and see if click redirect to supposed page with correct link.  Page was also reviewed to see if the output rendered on each page was correct.  For forms that require input from user, testing was done by clicking submit buttons without user input and see if page displays correct error messages, and with correct input whether correct success message pops up.
+
+##### Web Service [json]( https://drive.google.com/file/d/1s9c_sR9F5EAk1FfuxGXEGjhL1f2Yxqkw/view?usp=sharing)
+
+Testing the web service and most importantly the endpoints was done using two different technologies. The most used testing resource was Postman, which was used to verify that the correct address was being requested at, while the correct headers cookies and body were being responded with. Postman was used both locally and through a team workspace using collections and documenting tests. The second technology used was Curl. In the beginning stages this was used to test simple endpoints on the localhost. As the service was deployed onto ec2 it became to difficult to retain sessions and redirects so we turned to postman. 
+
+The Service used much of the database code and implementation required constant revision of the databasemanager class. To do so successfully, temporary driver classes were needed to test that the correct information was being passed into any model classes, and associating a proper response based on the output from the database class
