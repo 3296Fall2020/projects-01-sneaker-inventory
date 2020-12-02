@@ -13,6 +13,7 @@ function deleteSneaker () {
 
     deleteButton.onclick = function () {
         var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
+        xmlhttp.withCredentials = true;
         var theUrl = "https://54.172.190.202:443/deleteSneaker";
 
         xmlhttp.open("POST", theUrl);
