@@ -23,9 +23,10 @@ function ajax(url, successCallBackFn, errorEle) {
             if (httpReq.status === 200) {   // 200 means file found (unlike 404 which means not found)
                 console.log("in ajax, js object printed next");
                 console.log(this.responseText);
-                var obj = JSON.parse(httpReq.responseText);
+                var obj = JSON.parse(httpReq.response);
+                var list = obj.inventoryResponse;
                 //var obj = JSON.stringify(httpReq.response);
-                console.log(obj);
+                console.log(list);
 
                 // Here we call back whichever function wanted us to make the AJAX call.
                 successCallBackFn(obj);
