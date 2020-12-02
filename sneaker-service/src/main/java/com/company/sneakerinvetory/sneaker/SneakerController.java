@@ -98,15 +98,15 @@ public class SneakerController {
             operation.createConnect();
 
             String username = (String) request.getSession().getAttribute("username");
-            boolean existing_user = operation.checkName(username);
-            if (existing_user) {
+         //   boolean existing_user = operation.checkName(username);
+           // if (existing_user) {
                 boolean existingSneaker = operation.querySneakerExists(username, sneaker.getIndex());
                 if (existingSneaker) {
                     boolean delete_sneaker = operation.deleteSneakerRow(username, sneaker.getIndex());
                     if (delete_sneaker) {
                         return new LoginResponse("SessionID");
                     }
-                }
+             //   }
             }
             operation.closeConnection();
             return new LoginResponse("NaN");
