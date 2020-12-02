@@ -5,7 +5,8 @@ function sneakerInventoryLive() {
 
     function processSneakerInventory (obj) {
 
-        var list = obj.inventoryResponse;
+        var list = [];
+        list = obj.inventoryResponse;
 
         var inventoryList = [];
         for (var i=0; i <list.length; i++) {
