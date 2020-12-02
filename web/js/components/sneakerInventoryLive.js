@@ -1,23 +1,23 @@
-function sneakerInventory() {
+function sneakerInventoryLive() {
     var clickSortContainer = document.createElement("div");
     clickSortContainer.classList.add("clickSort");
-    ajax("json/inventory.json", processSneakerInventory, clickSortContainer);
+    ajax("https://54.172.190.202:443/inventory", processSneakerInventory, clickSortContainer);
 
     function processSneakerInventory (list) {
 
         var inventoryList = [];
         for (var i=0; i <list.length; i++) {
             inventoryList[i] = {};
-            inventoryList[i].sneakerName = list[i].sneakerName;
-            inventoryList[i].image = "<img src='" + list[i].image + "' style=width:5rem'>";
-            inventoryList[i].currentValue = list[i].currentValue;
-            inventoryList[i].releaseDate = list[i].releaseDate;
-            inventoryList[i].webUserId = list[i].webUserId;
+            inventoryList[i].shoeName = list[i].shoeName;
+            inventoryList[i].sku = list[i].sku;
+            inventoryList[i].size = list[i].size;
+            inventoryList[i].price = list[i].price;
+            inventoryList[i].userId = list[i].userId;
         }
 
         var params = {
             list: inventoryList,
-            sortOrderPropName: "sneakerName",
+            sortOrderPropName: "shoeName",
             sortIcon: "icon/sortUpDown16.png",
             title: "Sneaker Inventory"
         }
@@ -29,7 +29,6 @@ function sneakerInventory() {
         addSneaker.innerHTML = "Add Sneaker";
         addSneaker.onclick = function() {window.location.hash = "#/addSneaker"};
         clickSortContainer.appendChild(addSneaker);
-
     }
     return clickSortContainer;
 }
