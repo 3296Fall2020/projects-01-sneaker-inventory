@@ -19,7 +19,7 @@ function deleteSneakerForm () {
             object[key] = value;
         });
         var json = JSON.stringify(object);
-
+        console.log(json);
         var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
         xmlhttp.withCredentials = true;
         var theUrl = "https://54.172.190.202:443/deleteSneaker";
@@ -61,25 +61,25 @@ function deleteSneakerForm () {
     var shoeName = document.createElement("input");
     shoeName.setAttribute("type", "hidden");
     shoeName.setAttribute("name", "shoeName");
-    shoeName.setAttribute("placeholder", "Sneaker Name");
+    shoeName.setAttribute("value", "name_of_sneaker");
 
     //create an input element for SKU
     var sku = document.createElement("input");
     sku.setAttribute("type", "hidden");
     sku.setAttribute("name", "sku");
-    sku.setAttribute("placeholder", "SKU");
+    sku.setAttribute("value", "sku");
 
     //create an input element for Size
     var size = document.createElement("input");
     size.setAttribute("type", "hidden");
     size.setAttribute("name", "size");
-    size.setAttribute("placeholder", "Size");
+    size.setAttribute("value", "size");
 
     //create an input element for Price
     var price = document.createElement("input");
     price.setAttribute("type", "hidden");
     price.setAttribute("name", "price");
-    price.setAttribute("placeholder", "Price");
+    price.setAttribute("value", "price");
 
     //create a submit button
     var insertButton = document.createElement("input");
@@ -88,9 +88,9 @@ function deleteSneakerForm () {
 
 
     form.appendChild(index);
-    form.appendChild(br.cloneNode());
+    //form.appendChild(br.cloneNode());
     form.appendChild(shoeName);
-    form.appendChild(br.cloneNode());
+    //form.appendChild(br.cloneNode());
     form.appendChild(sku);
     form.appendChild(br.cloneNode());
     form.appendChild(size);
