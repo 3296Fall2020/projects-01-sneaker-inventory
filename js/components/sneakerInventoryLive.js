@@ -12,7 +12,7 @@ function sneakerInventoryLive() {
         var inventoryList = [];
         for (var i=0; i <list.length; i++) {
             inventoryList[i] = {};
-            inventoryList[i].index = list[i].index;
+            //inventoryList[i].index = list[i].index;
             inventoryList[i].shoeName = list[i].shoeName;
             inventoryList[i].sku = list[i].sku;
             inventoryList[i].size = list[i].size;
