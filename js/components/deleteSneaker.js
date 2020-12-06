@@ -1,4 +1,4 @@
-function deleteSneaker () {
+function deleteSneakerOld () {
     var accountDiv = document.createElement("div");
     accountDiv.classList.add("account");
 

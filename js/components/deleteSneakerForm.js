@@ -1,0 +1,75 @@
+function deleteSneakerForm () {
+
+    var insertDiv = document.createElement("div");
+    insertDiv.classList.add("account");
+
+    //create break line element
+    var br = document.createElement("br");
+
+    //create a form
+    var form = document.createElement("form");
+    form.setAttribute("name", "myForm");
+    form.onsubmit = function() {
+
+        let myForm = document.forms["myForm"];
+        let formData = new FormData(myForm);
+
+        var object = {};
+        formData.forEach(function(value, key){
+            object[key] = value;
+        });
+        var json = JSON.stringify(object);
+
+        var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
+        xmlhttp.withCredentials = true;
+        var theUrl = "https://54.172.190.202:443/deleteSneaker";
+
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200){
+                console.log(this.responseText);
+                var result = JSON.parse(xmlhttp.response);
+                if (result.sessionID == 'SessionID'){
+                    alert("Sneaker edited");
+                    window.location.hash = "#/sneakerInventoryLive";
+                }else{
+                    alert(result.sessionID);
+                }
+            }
+        };
+
+        xmlhttp.open("POST", theUrl);
+        xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xmlhttp.send(json);
+
+        return false;
+    };
+
+    /*
+        needed elements shoeName, sku, size, price, user_id
+
+     */
+
+    //create an input element for Index
+    var index = document.createElement("input");
+    index.setAttribute("type", "text");
+    index.setAttribute("name", "index");
+    index.setAttribute("placeholder", "Index");
+    index.setAttribute("required","true");
+    index.setAttribute("maxlength","45");
+
+        //create a submit button
+    var insertButton = document.createElement("input");
+    insertButton.setAttribute("type", "submit");
+    insertButton.setAttribute("value", "Delete Sneaker");
+
+
+    form.appendChild(index);
+    form.appendChild(br.cloneNode());
+
+    form.appendChild(insertButton);
+
+    insertDiv.appendChild(form);
+
+    return insertDiv;
+
+}

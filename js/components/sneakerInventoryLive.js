@@ -24,7 +24,7 @@ function sneakerInventoryLive() {
         console.log(inventoryList);
         var params = {
             list: inventoryList,
-            sortOrderPropName: "shoeName",
+            sortOrderPropName: "index",
             sortIcon: "icon/sortUpDown16.png",
             title: "Sneaker Inventory"
         }
