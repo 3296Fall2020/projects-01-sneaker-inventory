@@ -19,6 +19,10 @@ function ajaxLive(url, successCallBackFn, errorEle) {
 
         if (httpReq.readyState === 4) {     // 4 means that the data transfer is complete
             console.log("in ajax, status is " + httpReq.status);
+            if (httpReq.status === 500) {
+                alert("You need to login to view inventory");
+                window.location.hash = "#/login";
+            }
 
             if (httpReq.status === 200) {   // 200 means file found (unlike 404 which means not found)
                 console.log("in ajax, js object printed next");
