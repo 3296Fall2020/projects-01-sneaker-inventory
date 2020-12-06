@@ -23,6 +23,15 @@ public class Sneaker {
         this.price = price;
     }
 
+    public Sneaker(int index, String shoeName, String sku, String size, String price, String marketValue) {
+        this.index = index;
+        this.shoeName = shoeName;
+        this.sku = sku;
+        this.size = size;
+        this.price = price;
+        this.marketValue = marketValue;
+    }
+
     public int getIndex() {
         return index;
     }

@@ -1,5 +1,8 @@
 package com.company.sneakerinvetory.MySQLConnction;
 
+import com.company.sneakerinvetory.sneaker.Sneaker;
+import com.company.sneakerinvetory.sneaker.SneakerResponse;
+
 import javax.json.*;
 import java.sql.*;
 
@@ -227,11 +230,11 @@ public class DatabaseOperation {
         return false;
     }
 
-    public String queryInventory(String userID){
+    public SneakerResponse queryInventory(String userID){
         String table = userID.toLowerCase() + "_inventory";
         ResultSet results = null;
         StringBuilder total = new StringBuilder();
-
+        SneakerResponse sneakerResponse = new SneakerResponse();
 
         try {
             statement = connect.createStatement();
@@ -256,16 +259,21 @@ public class DatabaseOperation {
                     String sku = row.getString("sku");
                     String size = row.getString("size");
                     String price = row.getString("price");
+                    String market = row.getString("market");
                     String user_id = row.getString("user_id");
 
-                    builder.add(Json.createObjectBuilder()  //added DL
+                    Sneaker sneaker = new Sneaker(index_id, shoeName, sku, size, price, market);
+                    sneakerResponse.add(sneaker);
+
+                   /* builder.add(Json.createObjectBuilder()  //added DL
                             .add("index_id", index_id)
                             .add("shoeName", shoeName)
                             .add("sku", sku)
                             .add("size", size)
                             .add("price", price)
+                            .add("market", market)
                             .add("user_id", user_id)
-                            .build());
+                            .build());*/
 
                     /*
                     JsonObject object = Json.createObjectBuilder() // convert to json
@@ -280,14 +288,14 @@ public class DatabaseOperation {
 
                      */
                 }
-                JsonArray arr = builder.build();  //added DL
-                total.append(arr.toString());  //added DL
+                /*JsonArray arr = builder.build();  //added DL
+                total.append(arr.toString());  //added DL*/
                 counter++;
             }
-            return total.toString();
+            return sneakerResponse;
         }catch (SQLException e){
             e.printStackTrace();
-            return "NaN";
+            return null;
         }
 
     }

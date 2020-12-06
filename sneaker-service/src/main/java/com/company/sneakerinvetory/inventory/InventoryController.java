@@ -2,6 +2,7 @@ package com.company.sneakerinvetory.inventory;
 
 import com.company.sneakerinvetory.HelloController;
 import com.company.sneakerinvetory.MySQLConnction.DatabaseOperation;
+import com.company.sneakerinvetory.sneaker.SneakerResponse;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
@@ -16,7 +17,7 @@ import java.sql.SQLException;
 public class InventoryController {
     @ResponseBody
     @RequestMapping(value = "/inventory", method = RequestMethod.GET)
-    public InventoryResponse handleInventory(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+    public SneakerResponse handleInventory(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
 
         response.setHeader("Access-Control-Allow-Origin", request.getHeader("Origin"));
         response.setHeader("Access-Control-Allow-Credentials", "true");
@@ -34,14 +35,16 @@ public class InventoryController {
             String username = (String) request.getSession().getAttribute("username");
            // boolean goodName = operation.checkName(username);
            // if (goodName) {
-                String json = operation.queryInventory(username);
-                if (!json.equals("NaN")) {
-                    return new InventoryResponse(json);
+                SneakerResponse sneakers = operation.queryInventory(username);
+                if (sneakers.getSneakerList() != null) {
+                    if (sneakers.getSneakerList().size() > 0) {
+                        return sneakers;
+                    }
            //     }
             }
-            return new InventoryResponse("NaN");
+            return null;
         }
         // respond that new session has been created
-        return new InventoryResponse("newSession");
+        return null;
     }
 }

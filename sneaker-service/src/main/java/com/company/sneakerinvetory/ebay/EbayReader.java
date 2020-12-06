@@ -133,6 +133,9 @@ public class EbayReader {
                 DomElement price_element = page.getFirstByXPath("//span[@class='s-item__price'][1]"); //find price of first element in table
                 lowest_price = price_element.getTextContent();
 
+                if (!lowest_price.contains("$")){
+                    lowest_price =  "$" + lowest_price;
+                }
                 return lowest_price;
             } else {
                 return "no results: bad name, unavailable size, or bad sku";
