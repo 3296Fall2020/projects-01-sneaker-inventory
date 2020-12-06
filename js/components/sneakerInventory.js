@@ -17,6 +17,7 @@ function sneakerInventory() {
             inventoryList[i].delete = `<img src=icon/delete.png class = "icon" onclick= "window.location.hash = '#/deleteSneaker'">`;
         }
 
+        console.log(inventoryList);
         var params = {
             list: inventoryList,
             sortOrderPropName: "sneakerName",

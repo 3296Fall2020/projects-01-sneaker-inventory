@@ -15,7 +15,7 @@ function sneakerInventoryLive() {
             inventoryList[i].price = list[i].price;
             inventoryList[i].userId = list[i].userId;
         }
-
+        console.log(inventoryList);
         var params = {
             list: inventoryList,
             sortOrderPropName: "shoeName",
