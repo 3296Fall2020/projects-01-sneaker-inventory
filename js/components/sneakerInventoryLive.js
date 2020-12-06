@@ -3,17 +3,17 @@ function sneakerInventoryLive() {
     clickSortContainer.classList.add("clickSort");
     ajaxLive("https://54.172.190.202:443/inventory", processSneakerInventory, clickSortContainer);
 
-    function processSneakerInventory (list) {
+    function processSneakerInventory (array) {
 
 
         var inventoryList = [];
-        for (var i=0; i <list.length; i++) {
+        for (var i=0; i <array.length; i++) {
             inventoryList[i] = {};
-            inventoryList[i].shoeName = list[i].shoeName;
-            inventoryList[i].sku = list[i].sku;
-            inventoryList[i].size = list[i].size;
-            inventoryList[i].price = list[i].price;
-            inventoryList[i].userId = list[i].userId;
+            inventoryList[i].shoeName = array[i].shoeName;
+            inventoryList[i].sku = array[i].sku;
+            inventoryList[i].size = array[i].size;
+            inventoryList[i].price = array[i].price;
+            inventoryList[i].userId = array[i].userId;
         }
 
         var params = {
