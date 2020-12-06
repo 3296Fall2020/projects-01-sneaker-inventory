@@ -129,7 +129,7 @@ function makeClickSort (params) {
         }
 
         // check if image
-        /*
+
         if (val.includes(".png") || val.includes(".jpg")) {
             console.log('is center');
             return "center";
@@ -142,7 +142,7 @@ function makeClickSort (params) {
             console.log("not a num - left");
             return "left";
         }
-        */
+
         return "right"; // it's a number
 
     } // alignment
