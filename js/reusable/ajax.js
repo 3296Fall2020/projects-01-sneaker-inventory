@@ -26,6 +26,7 @@ function ajax(url, successCallBackFn, errorEle) {
                 var obj = JSON.parse(httpReq.response);
                 var list = obj.inventoryResponse;
                 //var obj = JSON.stringify(httpReq.response);
+                console.log(obj);
                 console.log(list);
 
                 // Here we call back whichever function wanted us to make the AJAX call.
