@@ -25,11 +25,12 @@ function ajaxLive(url, successCallBackFn, errorEle) {
                 console.log(this.responseText);
                 var obj = JSON.parse(httpReq.response);
                 var list = JSON.stringify(obj.sneakerList);
+                var returnObj = JSON.parse(list);
                 //var obj = JSON.stringify(httpReq.response);
-                console.log(list);
+                console.log(returnObj);
 
                 // Here we call back whichever function wanted us to make the AJAX call.
-                successCallBackFn(list);
+                successCallBackFn(returnObj);
 
             } else {  // error, file not found
 
