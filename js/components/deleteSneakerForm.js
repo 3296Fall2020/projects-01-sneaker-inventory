@@ -57,7 +57,31 @@ function deleteSneakerForm () {
     index.setAttribute("required","true");
     index.setAttribute("maxlength","45");
 
-        //create a submit button
+    //create an input element for Sneaker Name
+    var shoeName = document.createElement("input");
+    shoeName.setAttribute("type", "hidden");
+    shoeName.setAttribute("name", "shoeName");
+    shoeName.setAttribute("placeholder", "Sneaker Name");
+
+    //create an input element for SKU
+    var sku = document.createElement("input");
+    sku.setAttribute("type", "hidden");
+    sku.setAttribute("name", "sku");
+    sku.setAttribute("placeholder", "SKU");
+
+    //create an input element for Size
+    var size = document.createElement("input");
+    size.setAttribute("type", "hidden");
+    size.setAttribute("name", "size");
+    size.setAttribute("placeholder", "Size");
+
+    //create an input element for Price
+    var price = document.createElement("input");
+    price.setAttribute("type", "hidden");
+    price.setAttribute("name", "price");
+    price.setAttribute("placeholder", "Price");
+
+    //create a submit button
     var insertButton = document.createElement("input");
     insertButton.setAttribute("type", "submit");
     insertButton.setAttribute("value", "Delete Sneaker");
@@ -65,7 +89,14 @@ function deleteSneakerForm () {
 
     form.appendChild(index);
     form.appendChild(br.cloneNode());
-
+    form.appendChild(shoeName);
+    form.appendChild(br.cloneNode());
+    form.appendChild(sku);
+    form.appendChild(br.cloneNode());
+    form.appendChild(size);
+    form.appendChild(br.cloneNode());
+    form.appendChild(price);
+    form.appendChild(br.cloneNode());
     form.appendChild(insertButton);
 
     insertDiv.appendChild(form);
