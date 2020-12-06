@@ -1,7 +1,7 @@
 function sneakerInventoryLive() {
     var clickSortContainer = document.createElement("div");
     clickSortContainer.classList.add("clickSort");
-    ajax("https://54.172.190.202:443/inventory", processSneakerInventory, clickSortContainer);
+    ajaxLive("https://54.172.190.202:443/inventory", processSneakerInventory, clickSortContainer);
 
     function processSneakerInventory (list) {
 
