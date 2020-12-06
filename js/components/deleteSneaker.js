@@ -62,7 +62,7 @@ function deleteSneaker () {
     var shoeName = document.createElement("input");
     shoeName.setAttribute("type", "text");
     shoeName.setAttribute("name", "shoeName");
-    shoeName.setAttribute("placeholder", "Sneaker Name");
+    shoeName.setAttribute("value", "Sneaker Name");
     shoeName.setAttribute("disabled","true");
     shoeName.setAttribute("maxlength","45");
 
@@ -70,7 +70,7 @@ function deleteSneaker () {
     var sku = document.createElement("input");
     sku.setAttribute("type", "text");
     sku.setAttribute("name", "sku");
-    sku.setAttribute("placeholder", "SKU");
+    sku.setAttribute("value", "SKU");
     sku.setAttribute("disabled","true");
     sku.setAttribute("maxlength","45");
 
@@ -78,7 +78,7 @@ function deleteSneaker () {
     var size = document.createElement("input");
     size.setAttribute("type", "text");
     size.setAttribute("name", "size");
-    size.setAttribute("placeholder", "Size");
+    size.setAttribute("value", "Size");
     size.setAttribute("disabled","true");
     size.setAttribute("maxlength","15");
 
@@ -86,7 +86,7 @@ function deleteSneaker () {
     var price = document.createElement("input");
     price.setAttribute("type", "text");
     price.setAttribute("name", "price");
-    price.setAttribute("placeholder", "Price");
+    price.setAttribute("value", "Price");
     price.setAttribute("disabled","true");
     price.setAttribute("maxlength","15");
 
