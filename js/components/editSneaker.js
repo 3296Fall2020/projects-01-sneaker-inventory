@@ -49,6 +49,14 @@ function editSneaker () {
 
      */
 
+    //create an input element for Index
+    var index = document.createElement("input");
+    index.setAttribute("type", "text");
+    index.setAttribute("name", "index");
+    index.setAttribute("placeholder", "Index");
+    index.setAttribute("required","true");
+    index.setAttribute("maxlength","45");
+
     //create an input element for Sneaker Name
     var shoeName = document.createElement("input");
     shoeName.setAttribute("type", "text");
@@ -87,6 +95,8 @@ function editSneaker () {
     insertButton.setAttribute("value", "Edit Sneaker");
 
 
+    form.appendChild(index);
+    form.appendChild(br.cloneNode());
     form.appendChild(shoeName);
     form.appendChild(br.cloneNode());
     form.appendChild(sku);
