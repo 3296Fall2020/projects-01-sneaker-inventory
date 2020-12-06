@@ -24,7 +24,7 @@ function ajaxLive(url, successCallBackFn, errorEle) {
                 console.log("in ajax, js object printed next");
                 console.log(this.responseText);
                 var obj = JSON.parse(httpReq.response);
-                var list = JSON.parse(obj.sneakerList);
+                var list = obj.sneakerList;
                 //var obj = JSON.stringify(httpReq.response);
                 console.log(list);
 
