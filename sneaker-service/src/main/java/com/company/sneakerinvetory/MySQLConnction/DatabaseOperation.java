@@ -262,7 +262,8 @@ public class DatabaseOperation {
                     String market = row.getString("market");
                     String user_id = row.getString("user_id");
 
-                    Sneaker sneaker = new Sneaker(index_id, shoeName, sku, size, price, market);
+                    Sneaker sneaker = new Sneaker(shoeName, sku, size, price);
+                    sneaker.setIndex(index_id);sneaker.setMarketValue(market);
                     sneakerResponse.add(sneaker);
 
                    /* builder.add(Json.createObjectBuilder()  //added DL
