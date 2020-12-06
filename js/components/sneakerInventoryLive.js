@@ -18,6 +18,8 @@ function sneakerInventoryLive() {
             inventoryList[i].size = list[i].size;
             inventoryList[i].price = list[i].price;
             inventoryList[i].marketValue = list[i].marketValue;
+            inventoryList[i].update = `<img src=icon/update.png class = "icon" onclick= "window.location.hash = '#/editSneaker'">`;
+            inventoryList[i].delete = `<img src=icon/delete.png class = "icon" onclick= "window.location.hash = '#/deleteSneaker'">`;
         }
         console.log(inventoryList);
         var params = {

@@ -28,7 +28,7 @@ function addSneaker () {
             if (this.readyState == 4 && this.status == 200){
                 console.log(this.responseText);
                 var result = JSON.parse(xmlhttp.response);
-                if (result.sessionID == 'register'){
+                if (result.sessionID == 'sessionID'){
                     alert("Sneaker Added to Inventory");
                     window.location.hash = "#/sneakerInventory";
                 }else{
