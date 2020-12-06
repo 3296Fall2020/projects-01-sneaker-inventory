@@ -129,11 +129,12 @@ function makeClickSort (params) {
         }
 
         // check if image
+        /*
         if (val.includes(".png") || val.includes(".jpg")) {
             console.log('is center');
             return "center";
         }
-
+        */
         // check if numeric (remove $ and , and then check if numeric)
         var possibleNum = val.replace("$", "");
         possibleNum = possibleNum.replace(",", "");
