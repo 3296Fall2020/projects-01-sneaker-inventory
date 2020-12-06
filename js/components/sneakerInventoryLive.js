@@ -5,15 +5,19 @@ function sneakerInventoryLive() {
 
     function processSneakerInventory (list) {
 
+        /*
+        [{"index":1,"shoeName":"yeezy-black","sku":"fu9006","size":"11","price":"$300","marketValue":"355"}]
+         */
 
         var inventoryList = [];
         for (var i=0; i <list.length; i++) {
             inventoryList[i] = {};
+            inventoryList[i].index = list[i].index;
             inventoryList[i].shoeName = list[i].shoeName;
             inventoryList[i].sku = list[i].sku;
             inventoryList[i].size = list[i].size;
             inventoryList[i].price = list[i].price;
-            inventoryList[i].userId = list[i].userId;
+            inventoryList[i].marketValue = list[i].marketValue;
         }
         console.log(inventoryList);
         var params = {
