@@ -1,7 +1,6 @@
 package com.company.sneakerinvetory.MySQLConnction;
 
-import javax.json.Json;
-import javax.json.JsonObject;
+import javax.json.*;
 import java.sql.*;
 
 public class DatabaseOperation {
@@ -248,6 +247,9 @@ public class DatabaseOperation {
                 ResultSet row = secondStatement.executeQuery(inventoryQuery); // grab row based on index_id
                 //results = statement.executeQuery(inventoryQuery);
 
+
+                JsonArrayBuilder builder = Json.createArrayBuilder(); //added DL
+
                 while (row.next()) {
                     int index_id = row.getInt("index_id");
                     String shoeName = row.getString("shoeName");
@@ -256,6 +258,16 @@ public class DatabaseOperation {
                     String price = row.getString("price");
                     String user_id = row.getString("user_id");
 
+                    builder.add(Json.createObjectBuilder()  //added DL
+                            .add("index_id", index_id)
+                            .add("shoeName", shoeName)
+                            .add("sku", sku)
+                            .add("size", size)
+                            .add("price", price)
+                            .add("user_id", user_id)
+                            .build());
+
+                    /*
                     JsonObject object = Json.createObjectBuilder() // convert to json
                             .add("index_id", index_id)
                             .add("shoeName", shoeName)
@@ -265,7 +277,11 @@ public class DatabaseOperation {
                             .add("user_id", user_id)
                             .build();
                     total.append(object.toString());
+
+                     */
                 }
+                JsonArray arr = builder.build();  //added DL
+                total.append(arr.toString());  //added DL
                 counter++;
             }
             return total.toString();

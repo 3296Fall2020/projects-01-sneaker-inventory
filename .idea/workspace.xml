@@ -22,7 +22,30 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f967241-f01a-48f4-8776-6fb9dd6317ba" name="Default Changelist" comment="addSneaker, editSneaker, deleteSneaker frontend page added.  Currently not working due to error connecting to backend (cookie/session issue)" />
+    <list default="true" id="0f967241-f01a-48f4-8776-6fb9dd6317ba" name="Default Changelist" comment="addSneaker, editSneaker, deleteSneaker frontend page added.  Currently not working due to error connecting to backend (cookie/session issue)">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_findbugs_jsr305_1_3_9.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_errorprone_error_prone_annotations_2_1_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_25_0_jre.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_j2objc_j2objc_annotations_1_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_squareup_okhttp3_okhttp_3_14_9.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_squareup_okio_okio_1_14_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_exec_1_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_checkerframework_checker_compat_qual_2_0_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_mojo_animal_sniffer_annotations_1_14.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jsoup_jsoup_1_13_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_seleniumhq_selenium_selenium_api_3_141_59.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_seleniumhq_selenium_selenium_chrome_driver_3_141_59.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_seleniumhq_selenium_selenium_edge_driver_3_141_59.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_seleniumhq_selenium_selenium_firefox_driver_3_141_59.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_seleniumhq_selenium_selenium_ie_driver_3_141_59.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_seleniumhq_selenium_selenium_java_3_141_59.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_seleniumhq_selenium_selenium_opera_driver_3_141_59.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_seleniumhq_selenium_selenium_remote_driver_3_141_59.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_seleniumhq_selenium_selenium_safari_driver_3_141_59.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_seleniumhq_selenium_selenium_support_3_141_59.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sneaker-service/src/main/java/com/company/sneakerinvetory/MySQLConnction/DatabaseOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/sneaker-service/src/main/java/com/company/sneakerinvetory/MySQLConnction/DatabaseOperation.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,13 +58,16 @@
       </list>
     </option>
   </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="dl-inventory" />
+  </component>
   <component name="Git.Pull.Settings">
     <option name="BRANCH" value="development" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="tp-automate-stockX-average" />
+        <entry key="$PROJECT_DIR$" value="dl-account" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -65,7 +91,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/web/js/components" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../sneaker-inventory-frontend" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -78,7 +104,20 @@
       <recent name="C:\Users\David\IdeaProjects\projects-01-sneaker-inventory\web\style" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.driver">
+  <component name="RunManager" selected="Application.DatabaseOperation">
+    <configuration name="DatabaseOperation" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.company.sneakerinvetory.MySQLConnction.DatabaseOperation" />
+      <module name="sneaker-invetory" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.company.sneakerinvetory.MySQLConnction.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SneakerInvetoryApplication (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.company.sneakerinvetory.SneakerInvetoryApplication" />
       <module name="sneaker-invetory" />
@@ -129,18 +168,27 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SneakerInvetoryApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="sneaker-invetory" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.company.sneakerinvetory.SneakerInvetoryApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.SneakerInvetoryApplication" />
       <item itemvalue="Application.SneakerInvetoryApplication (1)" />
       <item itemvalue="Application.driver" />
+      <item itemvalue="Spring Boot.SneakerInvetoryApplication" />
+      <item itemvalue="Application.DatabaseOperation" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.DatabaseOperation" />
         <item itemvalue="Application.driver" />
         <item itemvalue="Application.SneakerInvetoryApplication (1)" />
         <item itemvalue="Application.SneakerInvetoryApplication" />
         <item itemvalue="Application.driver" />
-        <item itemvalue="Application.SneakerInvetoryApplication (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -153,6 +201,8 @@
       <option name="presentableId" value="Default" />
       <updated>1604287956971</updated>
       <workItem from="1606432086780" duration="15251000" />
+      <workItem from="1606945201842" duration="1056000" />
+      <workItem from="1607276632272" duration="2096000" />
     </task>
     <task id="LOCAL-00001" summary="ajax.js changed to fix jason parse error">
       <created>1606752025335</created>
@@ -175,7 +225,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606829780921</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="addSneaker, editSneaker, deleteSneaker frontend page added.  Currently not working due to error connecting to backend (cookie/session issue)">
+      <created>1606830363661</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1606830363661</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -208,10 +265,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="782" y="178" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605583787042" />
-    <state x="795" y="337" key="FileChooserDialogImpl" timestamp="1606661928720">
+    <state x="795" y="337" key="FileChooserDialogImpl" timestamp="1606945242691">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="795" y="337" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1606661928720" />
+    <state x="795" y="337" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1606945242691" />
     <state x="1060" y="454" key="FileChooserDialogImpl/0.0.2560.1400/-1080.0.1080.1920/2560.0.2560.1440@0.0.2560.1400" timestamp="1604288186335" />
     <state width="2517" height="484" key="GridCell.Tab.0.bottom" timestamp="1605474998646">
       <screen x="0" y="0" width="2560" height="1400" />
@@ -267,10 +324,10 @@
     <state x="586" y="189" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1605584117880" />
     <state x="781" y="344" key="SettingsEditor/0.0.2560.1400/-1080.0.1080.1920/2560.0.2560.1440@0.0.2560.1400" timestamp="1604290905174" />
     <state x="781" y="344" key="SettingsEditor/2560.0.2560.1400/0.0.2560.1400/-1080.0.1080.1920@0.0.2560.1400" timestamp="1604610623243" />
-    <state x="303" y="249" key="Vcs.Push.Dialog.v2" timestamp="1606830191715">
+    <state x="303" y="249" key="Vcs.Push.Dialog.v2" timestamp="1606830542747">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="303" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1606830191715" />
+    <state x="303" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1606830542747" />
     <state x="449" y="414" key="git4idea.ui.GitStashDialog" timestamp="1606830218270">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
