@@ -30,7 +30,7 @@ function addSneaker () {
                 var result = JSON.parse(xmlhttp.response);
                 if (result.sessionID == 'SessionID'){
                     alert("Sneaker Added to Inventory");
-                    window.location.hash = "#/sneakerInventory";
+                    window.location.hash = "#/sneakerInventoryLive";
                 }else{
                     alert(result.sessionID);
                 }

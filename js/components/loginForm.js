@@ -30,7 +30,7 @@ function loginForm () {
                 var result = JSON.parse(xmlhttp.response);
                 if (result.sessionID == 'login'){
                     alert("Login Success!");
-                    window.location.hash = "#/sneakerInventory";
+                    window.location.hash = "#/sneakerInventoryLive";
                 }else{
                     alert(result.sessionID);
                 }
