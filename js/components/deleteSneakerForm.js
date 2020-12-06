@@ -92,11 +92,11 @@ function deleteSneakerForm () {
     form.appendChild(shoeName);
     //form.appendChild(br.cloneNode());
     form.appendChild(sku);
-    form.appendChild(br.cloneNode());
-    form.appendChild(size);
-    form.appendChild(br.cloneNode());
+    //form.appendChild(br.cloneNode());
+    //form.appendChild(size);
+    //form.appendChild(br.cloneNode());
     form.appendChild(price);
-    form.appendChild(br.cloneNode());
+    //form.appendChild(br.cloneNode());
     form.appendChild(insertButton);
 
     insertDiv.appendChild(form);
