@@ -14,6 +14,7 @@ function logout () {
         var theUrl = "https://54.172.190.202:443/logout";
 
         xmlhttp.open("DELETE", theUrl);
+        xmlhttp.send();
         alert("Logged out");
         window.location.hash = "#/home";
 
