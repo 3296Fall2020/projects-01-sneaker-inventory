@@ -30,7 +30,7 @@ function deleteSneaker () {
                 console.log(this.responseText);
                 var result = JSON.parse(xmlhttp.response);
                 if (result.sessionID == 'SessionID'){
-                    alert("Sneaker edited");
+                    alert("Sneaker deleted");
                     window.location.hash = "#/sneakerInventoryLive";
                 }else{
                     alert(result.sessionID);
@@ -63,7 +63,7 @@ function deleteSneaker () {
     shoeName.setAttribute("type", "text");
     shoeName.setAttribute("name", "shoeName");
     shoeName.setAttribute("placeholder", "Sneaker Name");
-    shoeName.setAttribute("required","true");
+    shoeName.setAttribute("disabled","true");
     shoeName.setAttribute("maxlength","45");
 
     //create an input element for SKU
@@ -71,7 +71,7 @@ function deleteSneaker () {
     sku.setAttribute("type", "text");
     sku.setAttribute("name", "sku");
     sku.setAttribute("placeholder", "SKU");
-    sku.setAttribute("required","true");
+    sku.setAttribute("disabled","true");
     sku.setAttribute("maxlength","45");
 
     //create an input element for Size
@@ -79,7 +79,7 @@ function deleteSneaker () {
     size.setAttribute("type", "text");
     size.setAttribute("name", "size");
     size.setAttribute("placeholder", "Size");
-    size.setAttribute("required","true");
+    size.setAttribute("disabled","true");
     size.setAttribute("maxlength","15");
 
     //create an input element for Price
@@ -87,7 +87,7 @@ function deleteSneaker () {
     price.setAttribute("type", "text");
     price.setAttribute("name", "price");
     price.setAttribute("placeholder", "Price");
-    price.setAttribute("required","true");
+    price.setAttribute("disabled","true");
     price.setAttribute("maxlength","15");
 
     //create a submit button
