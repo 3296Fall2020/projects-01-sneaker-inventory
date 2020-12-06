@@ -134,7 +134,7 @@ function makeClickSort (params) {
             console.log('is center');
             return "center";
         }
-        */
+
         // check if numeric (remove $ and , and then check if numeric)
         var possibleNum = val.replace("$", "");
         possibleNum = possibleNum.replace(",", "");
@@ -142,7 +142,7 @@ function makeClickSort (params) {
             console.log("not a num - left");
             return "left";
         }
-
+        */
         return "right"; // it's a number
 
     } // alignment
