@@ -28,9 +28,9 @@ function editSneaker () {
             if (this.readyState == 4 && this.status == 200){
                 console.log(this.responseText);
                 var result = JSON.parse(xmlhttp.response);
-                if (result.sessionID == 'register'){
+                if (result.sessionID == 'SessionID'){
                     alert("Sneaker edited");
-                    window.location.hash = "#/sneakerInventory";
+                    window.location.hash = "#/sneakerInventoryLive";
                 }else{
                     alert(result.sessionID);
                 }
