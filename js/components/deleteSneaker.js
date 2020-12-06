@@ -19,6 +19,7 @@ function deleteSneaker () {
             object[key] = value;
         });
         var json = JSON.stringify(object);
+        console.log(json);
 
         var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
         xmlhttp.withCredentials = true;
