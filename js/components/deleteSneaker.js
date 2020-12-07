@@ -10,10 +10,10 @@ function deleteSneaker () {
     var form = document.createElement("form");
     form.setAttribute("name", "myForm");
     form.onsubmit = function() {
-        shoeName.setAttribute("disabled","false");
-        sku.setAttribute("disabled","false");
-        size.setAttribute("disabled","false");
-        price.setAttribute("disabled","false");
+        shoeName.removeAttribute("disabled");
+        sku.removeAttribute("disabled");
+        size.removeAttribute("disabled");
+        price.removeAttribute("disabled");
         let myForm = document.forms["myForm"];
         let formData = new FormData(myForm);
 
