@@ -30,7 +30,7 @@ function registerForm () {
                 var result = JSON.parse(xmlhttp.response);
                 if (result.sessionID == 'register'){
                     alert("You have successfully registered");
-                    window.location.hash = "#/sneakerInventory";
+                    window.location.hash = "#/sneakerInventoryLive";
                 }else{
                     alert(result.sessionID);
                 }
